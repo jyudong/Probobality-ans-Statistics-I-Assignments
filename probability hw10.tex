@@ -1,0 +1,133 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{PROBABILITY AND STATISTICS I
+\\HOMEWORK X}
+\author{\\Jianyu Dong   ~~2019511017}
+\date{May, 7~ 2021}
+
+\begin{document}
+    
+\maketitle
+\newpage
+
+\section{}
+By the definition, we have the sample mean and sample variance are independent with i. Thus, for any constants c and d, we could get that $$\begin{aligned}
+    \sum_{i=1}^n(x_i-c)(y_i-d)&=\sum_{i=1}^n(x_i-\overline{x}+\overline{x}-c)(y_i-\overline{y}+\overline{y}-d)\\
+    &=\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})+(\overline{x}-c)\sum_{i=1}^n(y_i-\overline{y})+(\overline{y}-d)\sum_{i=1}^n(x_i-\overline{x})+n(\overline{x}-c)(\overline{y}-d)
+\end{aligned}$$\indent
+We could easily get that $$\sum_{i=1}^n(x_i-\overline{x})=\sum_{i=1}^nx_i-n\overline{x}=0,~\sum_{i=1}^n(y_i-\overline{y})=\sum_{i=1}^ny_i-n\overline{y}=0$$\indent
+So that we could get that $$\sum_{i=1}^n(x_i-c)(y_i-d)=\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})+n(\overline{x}-c)(\overline{y}-d)$$
+
+\section{}
+Since $X_i$ form a random sample with mean value $\mu$ and variance $\sigma^2$, we could get that $$\mathbf{E}(X_i)=\mu,~\mathbf{Var}(X_i)=\mathbf{E}(X_i^2)-\mathbf{E}(X_i)^2=\sigma^2.$$\indent
+Since $\overline{X}_n=\frac{1}{n}\sum_{i=1}^nX_i$ and $T=\frac{1}{n}\sum_{i=1}^n(X_i-\overline{X})^2$, we could get that $$\mathbf{E}(\overline{X}_n)=\frac{1}{n}\sum_{i=1}^n\mathbf{E}(X_i)=\mu,~\mathbf{Var}(\overline{X}_n)=\mathbf{E}(\overline{X}_n^2)-\mathbf{E}(\overline{X}_n)^2=\frac{1}{n^2}\sum_{i=1}^n\mathbf{Var}(X_i)=\frac{\sigma^2}{n}.$$\indent
+So we could determine that $$\mathbf{E}(T)=\frac{1}{n}\sum_{i=1}^n\mathbf{E}(X_i^2-2X_i\overline{X}_n+\overline{X}_n^2)=\frac{1}{n}\sum_{i=1}^n(\mathbf{E}(X_i^2)-2\mathbf{E}(X_i\overline{X}_n)+\mathbf{E}(\overline{X}_n^2)).$$\indent
+We have get that $$\sum_{i=1}^n\mathbf{E}(X_i^2)=n(\sigma^2+\mu^2),~\sum_{i=1}^n\mathbf{E}(\overline{X}_n^2)=\sigma^2+n\mu^2.$$\indent
+By the definition, we could calculate that $$\mathbf{E}(X_i\overline{X}_n)=\mathbf{E}(\frac{1}{n}\sum_{j=1}^nX_iX_j)=\frac{1}{n}\sum_{j=1}^n\mathbf{E}(X_iX_j)=\frac{1}{n}((n-1)\mu^2+\mu^2+\sigma^2)=\mu^2+\frac{\sigma^2}{n}$$\indent
+Thus, we could get that $$\sum_{i=1}^n\mathbf{E}(X_i\overline{X}_n)=n\mu^2+\sigma^2$$\indent
+So we get that $$\mathbf{E}(T)=\frac{1}{n}(n(\sigma^2+\mu^2)+\sigma^2+n\mu^2-2(n\mu^2+\sigma^2))=\frac{n-1}{n}\sigma^2.$$\indent
+If we use this as an estimator for the variance, this is biased.\\\indent
+An unbiased estimator is $$T'=\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2.$$\indent
+We could get that $$\mathbf{E}(T')=\mathbf{E}(\frac{n}{n-1}T)=\sigma^2.$$\indent
+Which means that T' is an unbiased estimator.
+
+\section{}
+Since $X_i$ are random samples from U(-1,1), we could get the p.d.f. of $X_i$ is $$f_{X_i}(x_i)=\frac{1}{2},~for ~-1<x_i<1$$\indent
+zero elsewhere. Thus, we could get the expectation and variance of $X_i$ are $$\mathbf{E}(X_i)=\int_{-1}^1\frac{1}{2}x_i\,dx_i=0,~\mathbf{Var}(X_i)=\int_{-1}^1\frac{1}{2}(x_i-0)^2=\frac{1}{3}.$$\indent
+So we could get that $$\mathbf{E}(\overline{X})=0,~\mathbf{Var}(\overline{X})=\frac{1}{n}\mathbf{Var}(X_i)=\frac{1}{3n}.$$
+
+\section{}
+By the definition, we have the sample variance is $$S_2^2=\frac{1}{2-1}\sum_{i=1}^2(X_i-\overline{X})^2.$$\indent
+We have that $\overline{X}=\frac{X_1+X_2}{2}$, so that $$S_2^2=(\frac{X_1-X_2}{2})^2+(\frac{X_2-X_1}{2})^2=\frac{1}{2}(X_1-X_2)^2.$$\indent
+By the definition, we have that $$S_n^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2.$$\indent
+We have that $$\overline{X}=\frac{\sum_{i=1}^nX_i}{n}.$$\indent
+So that $$S_n^2=\frac{1}{n^2(n-1)}\sum_{i=1}^n\left(\sum_{j\neq i}(X_i-X_j)\right)^2$$\indent
+We could calculate that $$\left(\sum_{j\neq i}(X_i-X_j)\right)^2=\sum_{j\neq i}(X_i-X_j)^2+\sum_{j\neq i,k\neq i,k\neq j}(X_i-X_j)(X_i-X_k)$$\indent
+Then we add all i=1\dots n, and we have $(X_i-X_j)^2=(X_j-X_i)^2$, so that we get $$\sum_{i=1}^n\left(\sum_{j\neq i}(X_i-X_j)\right)^2=(2+n-2)\sum_{i<j}(X_i-X_j)^2=n\sum_{i<j}(X_i-X_j)^2.$$\indent
+Which uses that $$(X_i-X_j)(X_i-X_k)+(X_j-X_i)(X_j-X_k)=X(i-X_j)(X_i-X_k+X_k-X_j)=(X_i-X_j)^2.$$\indent
+So we have prove that $$S_n^2=\frac{1}{n(n-1)}\sum_{i<j}(X_i-X_j)^2.$$
+
+\section{}
+Since $X_i$ form a random sample from an exponential distribution with parameter $\lambda$, we could get that $$\mu_1=\mathbf{E}(X)=\frac{1}{\lambda}.$$\indent
+So that we get $$\lambda=\frac{1}{\mu_1}.$$\indent
+Next, we set $$\hat{\mu}_1=\frac{1}{n}\sum_{i=1}^nX_i$$\indent
+to obtain estimator $$\hat{\lambda}=\frac{1}{\hat{\mu}_1}=\frac{n}{\sum_{i=1}^nX_i}.$$\indent
+Since $X_i$ are independent, we could get the joint p.d.f. of $X_i$ is $$f(x_1,x_2,\dots,x_n)=\prod_{i=1}^nf_{X_i}(x_i)=\lambda^ne^{-\lambda\sum_{i=1}^nx_i},~for ~x_i>0,$$\indent
+zero elsewhere. Let $T=n/\sum_{i=1}^nX_i$, we could get that $$\mathbf{E}(T)=\int_0^{+\infty}\dots\int_{0}^{+\infty}\frac{n\lambda^n}{x_1+\dots+x_n}e^{-\lambda(x_1+\dots+x_n)}\,dx_1\dots\,dx_n.$$\indent
+Let $$y_1=\frac{x_1+\dots+x_n}{n},y_i=x_i,~for ~i=2,3,\dots,n.$$\indent
+So we could get that $$x_1=ny_1-\sum_{i=2}^ny_i,x_j=y_j,~for ~j=2,3,\dots,n.$$\indent
+So the Jacobe is $J=n$, then the intergal could be written as $$\begin{aligned}
+    \mathbf{E}(T)&=\int_0^{+\infty}\int_0^{ny_1}\int_{0}^{ny_1-y_2}\dots\int_0^{ny_1-\sum_{i=2}^{n-1}y_i}\frac{n\lambda^n}{y_1}e^{-\lambda ny_1}\,dy_1\,dy_2\,dy_3\dots\,dy_n\\
+    &=\frac{(n\lambda)^n}{(n-1)!}\int_0^{+\infty}y_1^{n-2}e^{-\lambda ny_1}\,dy_1
+\end{aligned}$$\indent
+Using integration by parts, we could get that $$\mathbf{E}(T)=\frac{(n\lambda)^n}{(n-1)!}\frac{(n-2)!}{(n\lambda)^{n-1}}=\frac{n}{n-1}\lambda\neq\lambda$$\indent
+So this estimator is biased.
+
+\section{}
+Since $(X_i)_{i=1}^n$ are random samples from the uniform distribution U(a,b), let X follows the uniform distribution on (a,b), we could get the p.d.f. of X is $$f_X(x)=\frac{1}{b-a},~for ~a<x<b,$$\indent
+zero elsewhere. So the first and second moments are $$\mu_1=\mathbf{E}(X)=\frac{a+b}{2},~\mu_2=\mathbf{E}(X^2)=\frac{a^2+b^2+ab}{3}.$$\indent
+Then we could determine that $$a=\mu_1\mp\sqrt{3(\mu_2-\mu_1^2)},~b=\mu_1\pm\sqrt{3(\mu_2-\mu_1^2)}.$$\indent
+Since there must be a<b, we could get $$a=\mu_1-\sqrt{3(\mu_2-\mu_1^2)},~b=\mu_1+\sqrt{3(\mu_2-\mu_1^2)}.$$\indent
+Based on the data $(x_i)_{i=1}^n$, we could calculate the sample moments $$\hat{\mu_1}=\frac{1}{n}\sum_{i=1}^nx_i,~\hat{\mu_2}=\frac{1}{n}\sum_{i=1}^nx_i^2.$$\indent
+So the estimators of a and b are $$\hat{a}=\hat{\mu_1}-\sqrt{3(\hat{\mu_2}-\hat{\mu_1}^2)},~\hat{b}=\hat{\mu_1}+\sqrt{3(\hat{\mu_2}-\hat{\mu_1}^2)};$$\indent
+We could determine that $$\hat{a}=\frac{1}{n}\sum_{i=1}^nX_i-\sqrt{\frac{3}{n}\sum_{i=1}^n(X_i-\overline{X})^2}$$\indent
+Then we get that $$\mathbf{E}(\hat{a})=\frac{a+b}{2}-\mathbf{E}(\sqrt{\frac{3}{n}\sum_{i=1}^n(X_i-\overline{X})^2})$$\indent
+Assume that $\mathbf{E}(\hat{a})=a$, so we could get that $$\mathbf{E}(\sqrt{\frac{3}{n}\sum_{i=1}^n(X_i-\overline{X})^2})=\frac{b-a}{2}$$\indent
+Then we could get that $$\mathbf{Var}(\sqrt{\frac{3}{n}\sum_{i=1}^n(X_i-\overline{X})^2})=\mathbf{E}(\frac{3}{n}\sum_{i=1}^n(X_i-\overline{X})^2)-(\frac{b-a}{2})^2=-\frac{1}{4n}(b-a)^2<0.$$\indent
+Since there must be that $\mathbf{Var}(\sqrt{\frac{3}{n}\sum_{i=1}^n(X_i-\overline{X})^2})\geqslant 0$, the assumption is wrong. So $\mathbf{E}(\hat{a})\neq a$. Similarly, we could get that $\mathbf{E}(\hat{b})\neq b$ Which means that the estimators are biased.
+
+\section{}
+Since X follows uniform distribution on (0,$\theta$), we could get the p.d.f. of X is $$f_X(x)=\frac{1}{\theta},~for ~0<x<\theta,$$\indent
+zero elsewhere. So the first moment is $$\mu_1=\mathbf{E}(X)=\frac{\theta}{2}.$$\indent
+Then we could determine that $$\theta=2\mu_1.$$\indent
+Based on the data $(x_i)_{i=1}^9$, we could get that $$\hat{\mu_1}=\frac{\sum_{i=1}^9x_i}{9}=\frac{119}{90}.$$\indent
+So that we could determine that $$\hat{\theta}=2\hat{\mu_1}=\frac{119}{45}.$$\indent
+
+\section{}
+Since $X_i$(i=1,\dots,n) are random samples from a distribution with p.d.f. $$p(x,\theta)=\frac{2}{\theta^2}(\theta-x),~for ~0<x<\theta,\theta>0.$$\indent
+We could get the first moment is $$\mu_1=\mathbf{E}(X)=\int_0^{\theta}\frac{2}{\theta^2}x(\theta-x)\,dx=\frac{\theta}{3}.$$\indent
+Then we could determine that $$\theta=3\mu_1.$$\indent
+Based on the data $(x_i)_{i=1}^n$, we could get that $$\hat{\mu_1}=\frac{1}{n}\sum_{i=1}^nx_i.$$\indent
+Then the estimator of $\theta$ is $$\hat{\theta}=3\hat{\mu_1}=\frac{3}{n}\sum_{i=1}^nx_i.$$
+
+\section{}
+Since $(X_i)_{i=1}^n$ follows the binomial distribution with parameters n and p, we could get the mean and variance of X are $$\mathbf{E}(X)=np,~\mathbf{Var}(X)=np(1-p).$$\indent
+Then we could get the first and second moments of X are $$\mu_1=\mathbf{E}(X)=np,~\mu_2=\mathbf{E}(X^2)=np(1-p)+(np)^2.$$\indent
+So we could determine that $$p=1-\frac{\mu_2-\mu_1^2}{\mu_1},~n=\frac{\mu_1^2}{\mu_1^2+\mu_1-\mu_2}.$$\indent
+Next, baesd on the data, we set $$\hat{\mu}_1=\frac{1}{n}\sum_{i=1}^nx_i,~\hat{\mu}_2=\frac{1}{n}\sum_{i=1}^nx_i^2$$\indent
+to obtain estimators $$\hat{p}=1-\frac{\hat{\mu}_2-\hat{\mu}_1^2}{\hat{\mu}_1},~\hat{n}=\frac{\hat{\mu}_1^2}{\hat{\mu}_1^2+\hat{\mu}_1-\hat{\mu}_2}.$$
+
+
+\newpage
+a
+
+\end{document}
+Since $(\hat{\mu}_2-\hat{\mu}_1^2)=\frac{n-1}{n}S_n^2$, $S_n^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X})^2$ is the sample variance, and we know that $S_n^2$ is not biased, so that we could get that the estimators $\hat{a}$ and $\hat{b}$ are biased 
+
+
+Then we could get the mean and variance of X are $$\mathbf{E}(X)=\frac{a+b}{2},~\mathbf{Var}(X)=\frac{a^2+ab+b^2}{3}.$$\indent

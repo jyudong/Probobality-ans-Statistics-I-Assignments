@@ -1,0 +1,256 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{PROBABILITY AND STATISTICS I
+\\HOMEWORK IV}
+\author{\\Jianyu Dong   ~~2019511017}
+\date{March, 13~ 2021}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section{}
+Since X follows the Geometric distribution, by the definition we could get that $$p_X(x) = P(X=x) = \left(1-p\right)^{x-1}p ~~~~for~x=1,2,\dots$$\indent
+While a<1, we have that $$F(a) = 0$$\indent
+While $a\geqslant 1$, then we could calculate the c.d.f. is $$F(a) = P(x\leqslant a) = \sum_{x=1}^{\left\lfloor a\right\rfloor } \left(1-p\right)^{x-1}p = 1-\left(1-p\right)^{\left\lfloor a\right\rfloor} $$\indent
+So the c.d.f. of X is $$F(x) = \begin{cases}
+    0, & ~for ~x<1,\\
+    1-\left(1-p\right)^{\left\lfloor x\right\rfloor }, & ~for ~x\geqslant 1.
+\end{cases}$$
+
+\section{}
+We have that $X_1$ and $X_2$ have the joint p.d.f. is $$f(x_1,x_2) = \begin{cases}
+    x_1 + x_2,&~~for ~0<x_1<1,~0<x_2<1,\\
+    0,&~~otherwise.
+\end{cases}$$
+\subsection{}
+To calculate the marginal p.d.f. of $X_1$ and $X_2$, we just need to calculate two integrals $$f(x_1) = \int_{-\infty}^{+\infty} f(x_1,x_2) \,dx_2 = \int_0^1 \left(x_1+x_2\right) \,dx_2 = x_1 + \frac{1}{2}$$ $$f(x_2) = \int_{-\infty}^{+\infty} f(x_1,x_2) \,dx_1 = \int_0^1 \left(x_1+x_2\right) \,dx_1 = x_2 + \frac{1}{2}$$\indent
+So the marginal p.d.f. of $X_1$ is $$f(x_1) = \begin{cases}
+     x_1 +\frac{1}{2},&~for~0<x_1<1,\\
+     0, &otherwise.
+\end{cases}$$\indent
+We could also get the p.d.f. of $X_2$ is $$f(x_2) = \begin{cases}
+    x_2 +\frac{1}{2},&~for~0<x_2<1,\\
+    0, &otherwise.
+\end{cases}$$
+\subsection{}
+To calculate the probability $P(X_1+X_2 \leqslant 1)$, we just need to calculate that $$\int_0^1 \,dx_2 \int_0^{1-x_2} (x_1 + x_2) \,dx_1 = \frac{1}{3}$$\indent
+So the probability $$P(X_1+X_2 \leqslant 1) = \frac{1}{3}$$\indent
+\subsection{}
+While $0<a<1,~and~ 0<b<1$, we could calculate the c.d.f. of $X_1$ and $X_2$ is $$F_{X_1,X_2}(a,b) = \int_{-\infty}^{a} \,dx_1 \int_{-\infty}^{b} f(x_1,x_2) \,dx_2 = \frac{1}{2}ab(a+b)$$\indent
+So the c.d.f. of $X_1$ and $X_2$ is$$F_{X_1,X_2}(a,b) = \begin{cases}
+    1,& ~for ~a> 1 ~and ~b> 1,\\
+    \frac{1}{2}a(1+a),& ~for ~0<a\leqslant 1 ~and ~b>1,\\
+    \frac{1}{2}b(1+b),& ~for ~a>1 ~and ~0<b\leqslant 1,\\
+    \frac{1}{2}ab(a+b),& ~for ~0<a\leqslant 1 ~and ~0<b\leqslant 1,\\
+    0,& otherwise.
+\end{cases}$$\indent
+The c.d.f. of $X_1$ is $$F_{X_1}(a) = \int_{-\infty}^{a} f(x_1) \,dx_1 = \begin{cases}
+    0,& ~for ~a\leqslant 0,\\
+    \frac{1}{2}a(a+1),& ~for 0<a\leqslant 1,\\
+    1,& ~for ~a>1.
+\end{cases}$$\indent
+The c.d.f. of $X_2$ is $$F_{X_2}(b) = \int_{-\infty}^{b} f(x_2) \,dx_2 = \begin{cases}
+    0,& ~for ~b\leqslant 0,\\
+    \frac{1}{2}b(b+1),& ~for 0<b\leqslant 1,\\
+    1,& ~for ~b>1.
+\end{cases}$$\indent
+While $a,b \in (0,1)$, we could easily get that $$F_{X_1,X_2}(a,b) \neq F_{X_1}(a)F_{X_2}(b)$$\indent
+So $X_1$ and $X_2$ are not independent.
+
+\section{}
+\subsection{}
+Since a point (X,Y) is chosen at random from the circle S defined as follows$$S = \left\{(x,y):x^2+y^2\leqslant 1\right\}$$ we have that the p.d.f. of X and Y is $$f(x,y) = \begin{cases}
+    c,& for ~(x,y)\in S,\\
+    0,& otherwise.
+\end{cases}$$\indent
+To calculate the joint p.d.f. of X and Y, we know that $\int_{-\infty}^{+\infty} \,dx \int_{-\infty}^{+\infty} f(x,y) \,dy = 1$.\\\indent
+According to the geometric meaning of integral, we could get that $c\pi = 1$, so $c=\frac{1}{\pi}$.\\\indent
+So the joint p.d.f. of X and Y is $$f_{X,Y}(x,y) = \begin{cases}
+    \frac{1}{\pi},& for ~(x,y)\in S,\\
+    0,& otherwise.
+\end{cases}$$\indent
+To determine the marginal p.d.f. of X, we only need to calculate the integral $$f_X(x) = \int_{-\infty}^{+\infty} f_{X,Y}(x,y) \,dy =\begin{cases} 
+    \frac{2}{\pi}\sqrt{1-x^2}, & for~x\in[-1,1],\\
+    0, & otherwise.
+\end{cases}$$\indent
+To determine the marginal p.d.f. of X, we only need to calculate the integral $$f_Y(y) = \int_{-\infty}^{+\infty} f_{X,Y}(x,y) \,dx =\begin{cases} 
+    \frac{2}{\pi}\sqrt{1-y^2}, & for~y\in[-1,1],\\
+    0, & otherwise.
+\end{cases}$$\indent
+\subsection{}
+
+It is clear that $$f_{X,Y}(x,y) \neq f_X(x) f_Y(y)$$
+So we have $F_{X,Y}(x,y) \neq F_X(x)F_Y(y)$, which shows that X and Y are not independent.
+
+\section{}
+If F(x,y) = 1 for $x+2y\geqslant 1$ and F(x,y) = 0 elsewhere is a c.d.f. of two random variables we could get the magrinal c.d.f. of X is $$F_X(x) = \lim_{y \to +\infty} F_{X,Y}(x,y) = 1,~for ~x+2y\geqslant 1$$and $F_X(x)=0$ elsewhere.\\\indent
+So there exists $x\to -\infty$, satisfy that $F_X(x) = 1$, which is in contradiction with that if F(a) is a c.d.f., there is $\lim_{a\to-\infty}F(a) = 0$, which shows the assumption is wrong, so F(x,y) = 1 for $x+2y\geqslant 1$ and F(x,y) = 0 elsewhere cannot be a (cumulative) distribution function of two random variables.
+
+\section{}
+To prove $f(x_1,x_2)$ is a joint p.d.f. of two continuous-type random variables $X_1$ and $X_2$, we only need to prove that $\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f(x_1,x_2) \,dx_1 \,dx_2 = 1$. \\\indent
+Let $x_1 = r\cos\theta$, $x_2 = r\sin\theta$ and $0<r<\infty, ~0\leqslant\theta\leqslant \frac{\pi}{2} $, so we have $$f(x_1,x_2) = h(r,\theta) = \frac{2g(r)}{\pi r} $$
+Then the intergal could be written as $$\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f(x_1,x_2) \,dx_1 \,dx_2 = \int_0^{\infty} \,dr \int_0^{\frac{\pi}{2}} \frac{2g(r)}{\pi r} r \,dr \,d\theta = \int_0^{\infty} g(r) \,dr = 1$$\indent
+Which shows that $$f(x_1,x_2) = \begin{cases}
+    \frac{2g(\sqrt{x_1^2+x_2^2})}{\pi\sqrt{x_1^2+x_2^2}}, & ~for ~0<x<\infty,~0<x_2<\infty\\
+    0, & otherwise.
+\end{cases}$$ is a joint p.d.f. of two continuous-type random variables $X_1$ and $X_2$.
+
+\section{}
+Since the problem says for a and b from 1 to 5, the joint probability $P(X=a,Y=b)$ is either 0 or $\frac{1}{14}$ and the incomplete table shows $p_X(2) = \frac{5}{14}$ and $p_Y(1) = \frac{5}{14}$, we could get that $$P(X=2,Y=j) = \frac{1}{14}, ~for ~j=1,2,3,4,5; ~~P(X=i,Y=1) = \frac{1}{14}, ~for ~i=1,2,3,4,5.$$\indent
+Since $p_X(1) = \frac{1}{14}$ and $P(X=1,Y=1) = \frac{1}{14}$, and $p_Y(5) = \frac{1}{14}$ and $P(X=2,Y=5) = \frac{1}{14}$ as well, we could get $$P(X=1,Y=j) = 0, ~for ~j=2,3,4,5; ~~P(X=i,Y=5) = 0, ~for ~i=1,3,4,5.$$\indent
+Since $p_X(3) = \frac{4}{14}$ and $P(X=3,Y=1) = \frac{1}{14},P(X=3,Y=5) = 0$, and $p_Y(2) = \frac{4}{14}$ and $P(X=1,Y=2) = 0,P(X=2,Y=2) = \frac{1}{14}$ as well, we could get $$P(X=3,Y=j) = \frac{1}{14}, ~for ~j=2,3,4; ~~P(X=i,Y=2) = \frac{1}{14}, ~for ~i=3,4,5.$$\indent
+Since $p_X(4) = \frac{2}{14}$ and $P(X=4,Y=1) = \frac{1}{14},P(X=4,Y=2) = \frac{1}{14},P(X=4,Y=5) = 0$, and $p_X(5) = \frac{2}{14}$ and $P(X=5,Y=1) = \frac{1}{14},P(X=5,Y=2) = \frac{1}{14},P(X=5,Y=5) = 0$ as well, we could get $$P(X=4,Y=j) = \frac{1}{14}, ~for ~j=3,4; ~~P(X=5,Y=j) = \frac{1}{14}, ~for ~j=3,4.$$\indent
+So we could fill the table as following:
+
+\begin{center}
+    \begin{tabular}{clllll|c}
+    \hline
+    \hline
+     & & & $a$ & & & \\
+     \cline{2-6}
+    $b$ & $1$ & $2$ & $3$ & $4$ & $5$ & $p_Y(b)$ \\
+    \hline
+    $1$ & 1/14 & 1/14 & 1/14 & 1/14 & 1/14 & $5/14$ \\
+     \cline{7-7}
+    $2$ & 0 & 1/14 & 1/14 & 1/14 & 1/14 & $4/14$ \\
+     \cline{7-7}
+    $3$ & 0 & 1/14 & 1/14 & 0 & 0 & $2/14$ \\
+     \cline{7-7}
+    $4$ & 0 & 1/14 & 1/14 & 0 & 0 & $2/14$ \\ 
+     \cline{7-7}
+    $5$ & 0 & 1/14 & 0 & 0 & 0 & $1/14$ \\
+    \hline
+    $p_X(a)$ & $1/14$ & $5/14$  & $4/14$  & $2/14$   &  $2/14$ & $1$ \\
+    \hline
+    \hline
+    \end{tabular}
+\end{center}
+
+\section{}
+\subsection{}
+Since the joint probabilities P(X=a,Y=b) of the discrete random variables X and Y are given by the following table
+\begin{center}
+    \begin{tabular}{l ccc}
+    \hline
+    \hline
+     & & $a$ &  \\
+     \cline{2-4}
+    $b$\ \quad\qquad & $-1$ & $0$ & $1$ \\
+    \hline
+    $4$ & $\eta-\frac{1}{16}$ & $\frac{1}{4}-\eta$ & $0$ \\
+    \hline
+    $5$ & $\frac{1}{8}$ & $\frac{3}{16}$  & $\frac{1}{8}$  \\
+    \hline
+    $6$ & $\eta+\frac{1}{16}$ &  $\frac{1}{16}$ & $\frac{1}{4}-\eta$  \\
+    \hline
+    \hline
+    \end{tabular}
+\end{center}
+
+So we have that $0\leqslant \eta -\frac{1}{16} \leqslant 1$, $0\leqslant \frac{1}{4}-\eta \leqslant 1$, $0\leqslant \eta +\frac{1}{16} \leqslant 1$, $0\leqslant \frac{1}{4}-\eta \leqslant 1$. So we could calculate that $$\frac{1}{16} \leqslant \eta \leqslant \frac{1}{4}$$
+\subsection{}
+According to the table, we could calculate the c.d.f. of X and Y is $$F_{X,Y}(x,y) = \begin{cases}
+    \eta -\frac{1}{16}, & ~for ~-1\leqslant x <0,~4\leqslant y<5,\\
+    \frac{3}{16}, & ~for ~x\geqslant 0,~4\leqslant y<5,\\
+    \eta + \frac{1}{16}, & ~for ~-1\leqslant x <0,~5\leqslant y<6,\\
+    \frac{1}{2}, & ~for ~0\leqslant x <1,~5\leqslant y<6,\\
+    \frac{5}{8}, & ~for ~x\geqslant 1, ~~5\leqslant y<6,\\
+    2\eta +\frac{1}{8}, & ~for ~-1\leqslant x<0, ~y\geqslant 6,\\
+    \eta +\frac{5}{8}, & ~for ~0\leqslant x<1, ~y\geqslant 6,\\
+    1, & ~for ~x\geqslant 1, ~y\geqslant 6,\\
+    0, & ~otherwise.
+\end{cases}$$\indent
+We could calculate the c.d.f. of X is $$F_{X}(x) = \begin{cases}
+    2\eta +\frac{1}{8}, & ~for ~-1\leqslant x<0,\\
+    \eta +\frac{5}{8}, & ~for ~0\leqslant x<1,\\
+    1, & ~for ~x\geqslant 1,\\
+    0, & ~otherwise.
+\end{cases}$$\indent
+The c.d.f. of Y is $$F_{Y}(y) = \begin{cases}
+    \frac{3}{16}, & ~for ~4\leqslant y<5,\\
+    \frac{5}{8}, & ~for ~5\leqslant y<6,\\
+    1, & ~for ~y\geqslant 6,\\
+    0, & ~otherwise.
+\end{cases}$$\indent
+If X and Y are independent, there must be $F_{X,Y}(x,y) = F_{X}(x)F_{Y}(y)$. While $x\geqslant 0,~4\leqslant y<5$, if $F_{X,Y}(x,y) = F_{X}(x)F_{Y}(y)$, there is $\eta = \frac{3}{8}$, but $\eta \leqslant \frac{1}{4}$, so there is not a value of $\eta$ for X and Y are independent.
+
+\section{}
+\subsection{}
+To determine the magrinal  (cumulative) distribution functions of X and Y, we just need to calculate two limits.\\\indent
+The marginal c.d.f. of X is $$F_X(x) = \lim_{y\to \infty} F_{X,Y}(x,y) = \lim_{y\to \infty} \left(1 - e^{-2x} - e^{-y} + e^{-(2x+y)}\right) = 1-e^{-2x} ~~for ~x>0$$ and $F_X(x) = 0 ~otherwise$.\\\indent
+The marginal c.d.f. of Y is $$F_Y(y) = \lim_{x\to \infty} F_{X,Y}(x,y) = \lim_{x\to \infty} \left(1 - e^{-2x} - e^{-y} + e^{-(2x+y)}\right) = 1-e^{-y} ~~for ~y>0$$ and $F_Y(y) = 0 ~otherwise$.\\\indent
+\subsection{}
+To calculate the joint p.d.f. of X and Y, we just need to calculate the derivation. The p.d.f. of X and Y is $$f_{X,Y}(x,y) = \frac{d^2}{\,dx \,dy}F_{X,Y}(x,y) = 2e^{-(2x+y)} ~~for ~x>0,~y>0$$ and $f_{X,Y}(x,y) = 0, ~otherwise$
+\subsection{}
+The marginal p.d.f. of X is $$f_X(x) = \frac{d F_X(x)}{dx} = 2e^{-2x} ~~for ~x>0$$ and $f_X(x) = 0, ~otherwise.$ \\\indent
+The marginal p.d.f. of Y is $$f_Y(y) = \frac{d F_Y(y)}{dy} = e^{-y} ~~for ~y>0$$ and $f_Y(y) = 0, ~otherwise.$ \\\indent
+\subsection{}
+It is clearly that $F_{X,Y}(x,y) = F_X(x)F_Y(y)$, so X and Y are independent.
+
+\section{}
+\subsection{}
+By the definition, we have the joint p.d.f. of X and Y is $$f_{X,Y}(x,y) = g_X(x\mid y) f_Y(y) = \frac{(2y)^x}{x!}e^{-3y} ~for ~x=0,1,2\dots,~y>0$$ and $f_{X,Y}(x,y) = 0, ~otherwise.$\\\indent
+To calculate the p.m.f. of X, we only need to calculate the intergal $$p_X(x) = \int_{-\infty}^{+\infty} f_{X,Y}(x,y) \,dy = \frac{2^x}{x!3^{x+1}} \int_0^{+\infty} (3y)^x e^{-3y} \,d(3y) = \frac{2^x}{3^{x+1}}, ~for ~x=0,1,2\dots$$ and $p_X(x) = 0, ~elsewhere.$
+\subsection{}
+By the definition, the conditional p.d.f. $g_Y(y\mid 0)$ of Y given X = 0 is $$g_Y(y\mid 0) = \frac{f_{X,Y}(0,y)}{p_X(0)} = 3e^{-3y},~if ~y>0$$ $g_Y(y\mid 0) = 0, ~elsewhere$
+\subsection{}
+By the definition, the conditional p.d.f. $g_Y(y\mid 1)$ of Y given X = 1 is $$g_Y(y\mid 1) = \frac{f_{X,Y}(1,y)}{p_X(1)} = 9ye^{-3y},~if ~y>0$$ $g_Y(y\mid 1) = 0, ~elsewhere$
+\subsection{}
+Let $g_Y(y\mid 1) > g_Y(y\mid 0)$, we get $y > \frac{1}{3}$, which says that for $y > \frac{1}{3}$, $g_Y(y\mid 1) > g_Y(y\mid 0)$. It agrees that the more calls i see, the higher i should think the rate is.
+
+\section{}
+\subsection{}
+According to the question, we could assume that the joint p.d.f. of X and Y is $$f_{X,Y}(a,b) = \begin{cases}
+    c, & ~for ~a\geqslant 0,~b\leqslant 1,~b\geqslant a,\\
+    0, & ~elsewhere.
+\end{cases}$$ To calculate the constant c, we have $$\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f_{X,Y}(x,y) \,dx \,dy = \frac{c}{2} = 1$$so c=2.\\\indent
+Then the joint c.d.f. of X and Y is $$F_{X,Y}(a,b) = \int_{-\infty}^a \,dx \int_{-\infty}^b f_{X,Y}(x,y) \,dy =\begin{cases}
+    1, & ~for ~a\geqslant 1,~b\geqslant 1,\\
+    2a-a^2, & ~for ~0\leqslant a<1,~b\geqslant 1,\\
+    b^2, & ~for ~0\leqslant b\leqslant a<1,\\
+    2ab-a^2, & ~for ~0\leqslant a<b<1,\\
+    0, & ~elsewhere.
+\end{cases}$$
+\subsection{}
+The joint p.d.f. of X and Y is $$f_{X,Y}(a,b) = \begin{cases}
+    2, & ~for ~a\geqslant 0,~b\leqslant 1,~b\geqslant a,\\
+    0, & ~elsewhere.
+\end{cases}$$
+\subsection{}
+By the definition, when x is between 0 and 1, we have $$f_X(x) = \int_{-\infty}^{+\infty} f_{X,Y}(x,y) \,dy = \int_{x}^{1} 2 \,dy = 2-2x, ~for ~0<x<1$$\indent
+By the definition, when y is between 0 and 1, we have $$f_Y(y) = \int_{-\infty}^{+\infty} f_{X,Y}(x,y) \,dx = \int_0^y 2 \,dx = 2y, ~for ~0<y<1$$
+
+\section{}
+Since U = min\{X,Y\}, V = max\{X,Y\}, we could get the triangle region S:$\{(x,y)\mid 0\leqslant x \leqslant a,~x\leqslant y \leqslant a\}$. The area is $\frac{a^2}{2}$. Due to X,Y are uniformly distributed, U,V are uniformly distributed. So we have the p.d.f. of U and V is $$f_{U,V}(u,v) = \begin{cases}
+    \frac{2}{a^2}, & ~if ~0\leqslant u \leqslant a,~u\leqslant v \leqslant a,\\
+    0, & elsewhere.
+\end{cases}$$\indent
+So the c.d.f. of U and V is $$F_{U,V}(u,v) = \int_{-\infty}^{u}\int_{-\infty}^{v} f_{U,V}(x,y) \,dx \,dy = \frac{2}{a^2} \int_0^u \,dx \int_x^v \,dy = \frac{u(2v-u)}{a^2} = \frac{v^2-(v-u)^2}{a^2} ~for ~0\leqslant u\leqslant v\leqslant a$$
+
+\end{document}

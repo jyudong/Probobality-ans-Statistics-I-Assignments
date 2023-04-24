@@ -1,0 +1,124 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{PROBABILITY AND STATISTICS I
+\\HOMEWORK VIII}
+\author{\\Jianyu Dong   ~~2019511017}
+\date{April, 22~ 2021}
+
+\begin{document}
+    
+\maketitle
+\newpage
+
+\section{}
+By the definition, we have that $$\begin{aligned}
+    \Gamma(\alpha)&=\int_0^{+\infty}x^{\alpha-1}e^{-x}\,dx=\int_0^{+\infty}x^{\alpha-1}(-\,d(e^{-x}))\\
+    &=-x^{\alpha-1}e^{-x}\mid_0^{+\infty}+(\alpha-1)\int_0^{+\infty}x^{(\alpha-1)-1}e^{-x}\,dx=0+(\alpha-1)\Gamma(\alpha-1)
+\end{aligned}$$\indent
+Which shows that $$\Gamma(\alpha)=(\alpha-1)\Gamma(\alpha-1)$$
+
+\section{}
+Since $X_i$ form a random sample of size n from the exponential distribution with parameter $\beta$, we could get the p.d.f. and m.g.f. of $X_i$ are $$f_{X_i}(x_i)=\beta e^{-\beta x_i},~M_{X_i}(t)=\frac{\beta}{\beta -t}$$\indent
+Let $$Y=\sum_{i=1}^nX_i.$$\indent
+By the theorem, we have the m.g.f. of Y is $$M_Y(t)=\left(\frac{\beta}{\beta -t}\right)^n.$$\indent
+Let $Z=\frac{Y}{n}$, by the theorem, we have the m.g.f. of Z is $$M_Z(t)=M_Y(\frac{t}{n})=\left(\frac{n\beta}{n\beta -t}\right)^n.$$\indent
+Which is the m.g.f. of Gamma distribution with parameters n and $n\beta$. So we get the p.d.f. of Z is $$f_Z(z)=\frac{(n\beta)^n}{\Gamma(n)}z^{n-1}e^{-n\beta z},~for ~z>0$$\indent
+zero elsewhere. $Z=\overline{X}_n=\frac{1}{n}\sum_{i=1}^nX_i$.
+
+\section{}
+Since $X_1,X_2,X_3$ are random sample from the exponential distribution with parameter $\beta$ we could get the p.d.f. of $X_i$ is $$f_{X_i}(x_i)=\beta e^{-\beta x_i},~for ~x_i>0,$$\indent
+zero elsewhere, for i=1,2,3.\\\indent
+Let A=\{At least one of the random variables is greater than t, where t>0\} and B=\{None of the three random variables is greater than t, where t>0\}. Since A and B are complementary events, we could get that $$P(A)=1-P(B)=1-\left(\int_0^t\beta e^{-\beta x}\,dx\right)^3=1-\left(1-e^{-\beta t}\right)^3.$$\indent
+Thus, we get the probability of at least one of the random variables is greater than t, where t>0 is $1-\left(1-e^{-\beta t}\right)^3$.
+
+\section{}
+Since the random variables $X_1,\dots,X_n$ are independent and each $X_i$ has the exponential distribution with parameter $\beta_i$, by the definition, we have the p.d.f. of $X_i$ is $$f_{X_i}(x_i)=\beta_ie^{-\beta_ix_i},~for ~x_i>0$$\indent
+zero elsewhere, for i=1,2,\dots,n.\\\indent
+Since $Y=\min\{X_1,X_2,\dots,X_n\}$, we could have that $$P(Y>y)=P(X_1>y,\dots,X_n>y)=\prod_{i=1}^nP(X_i>y)=\prod_{i=1}^{n}\int_y^{\infty}\beta_ie^{-\beta_ix_i}\,dx_i=e^{-(\beta_1+\dots+\beta_n)y}$$\indent
+So we could get the p.d.f. of Y is $$f_Y(y)=\frac{d (1-P(Y>y))}{dy}=(\beta_1+\dots+\beta_n)e^{-(\beta_1+\dots+\beta_n)y}$$\indent
+Which shows that Y follows the exponential distribution with parameter $\beta_1+\dots+\beta_n$.
+
+\section{}
+Since the number of the minutes required by any particular student to complete the examination has the exponential distribution for which the mean is 80, by the theorem, we have that $\frac{1}{\beta}=80$, and the distribution of the minutes required by any particular student to complete the examination is $$f_X(x)=\frac{1}{80}e^{-\frac{x}{80}},~for ~x>0,$$\indent
+zero elsewhere.\\\indent
+Let A=\{At least one student will complete the examination using less than 40 minutes.\} and B=\{None of the five students will complete the examination using less than 40 minutes.\}, so we get that A and B are complementary events. Then we could get the probability of A is $$P(A)=1-P(B)=1-\left(\int_{40}^{\infty}\frac{1}{80}e^{-\frac{x}{80}}\,dx\right)^5=1-e^{-\frac{5}{2}}$$\indent
+Which means the probability that at least one of the students will complete the examination before 9:40 a.m. is $1-e^{-\frac{5}{2}}$.
+
+\section{}
+Since U follows the Gamma distribution with the parameters $\alpha$ and 1, and V follows the Gamma distribution with the parameters $\beta$ and 1, by the definition, we have the p.d.f. of U and V are $$f_U(u)=\frac{1}{\Gamma(\alpha)}u^{\alpha-1}e^{-u},~f_V(v)=\frac{1}{\Gamma(\beta)}v^{\beta-1}e^{-v},~for ~u>0,v>0,$$\indent
+zero elsewhere.\\\indent
+Since U and V are independent, we could get the joint p.d.f. of U and V is $$f_{U,V}(u,v)=f_U(u)f_V(v)=\frac{1}{\Gamma(\alpha)\Gamma(\beta)}u^{\alpha-1}v^{\beta-1}e^{-(u+v)},~for ~u>0,v>0$$\indent
+zero elsewhere.
+\subsection{}
+Let $X=\frac{U}{U+V}$ and $Y=U+V$. So we have that $U=XY,V=(1-X)Y$, then the Jacobian determinant is $$\mathbf{J}=det\begin{bmatrix}
+    y & x\\
+    -y & 1-x
+\end{bmatrix}=y.$$\indent
+So the joint p.d.f. of X and Y is $$f_{X,Y}(x,y)=y\frac{1}{\Gamma(\alpha)\Gamma(\beta)}(xy)^{\alpha-1}(y-xy)^{\beta-1}e^{-(xy+y-xy)}=\frac{1}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}y^{\alpha+\beta-1}e^{-y},$$\indent
+for 0<x<1 and y>0. Zero elsewhere.\\\indent
+We could get the magrinal p.d.f. of X is $$\begin{aligned}
+    f_X(x)&=\int_0^{\infty}f_{X,Y}(x,y)\,dy=\frac{1}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\int_0^{\infty}y^{\alpha+\beta-1}e^{-y}\,dy\\
+    &=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}.
+\end{aligned}$$\indent
+The magrinal p.d.f. of Y is $$\begin{aligned}
+    f_Y(y)&=\int_0^1f_{X,Y}(x,y)\,dy=\frac{1}{\Gamma(\alpha)\Gamma(\beta)}y^{\alpha+\beta-1}e^{-y}\int_0^1x^{\alpha-1}(1-x)^{\beta-1}\,dx\\
+    &=\frac{1}{\Gamma(\alpha+\beta)}y^{\alpha+\beta-1}e^{-y}
+\end{aligned}$$\indent
+Thus, we get that $$f_{X,Y}(x,y)=f_X(x)f_Y(y)$$\indent
+So we get that X and Y are independent.
+\subsection{}
+According to 6.1 the p.d.f. of X, we have that X follows the Beta distribution with parameters $\alpha$ and $\beta$.
+\subsection{}
+According to 6.1 the p.d.f. of Y, we have that Y follows the Gamma distribution with parameters $\alpha+\beta$ and 1.
+\subsection{}
+By the definition, we have that the Beta Distribution is $$f_X(x)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}$$\indent
+We know that the integral of the p.d.f. of X is 1, so that $$1=\int_0^1\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\,dx=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}B(\alpha,\beta)$$\indent
+So that we have $$B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$$
+
+\section{}
+\subsection{}
+Since the time that elapses from one bus to the next has the exponential distribution, by the definition, we have the p.d.f. of the time t elapsed is $$f_T(t)=\beta e^{\beta t},~for ~t>0,$$\indent
+zero elsewhere.\\\indent
+The expectation of T is $\frac{1}{\beta}=15$, so we get that $\beta=\frac{1}{15}$ and the p.d.f. of T is $$f_T(t)=\frac{1}{15}e^{-\frac{t}{15}},~for ~t>0,$$\indent
+zero elsewhere.\\\indent
+Let A=\{It takes less than ten minutes for the next bus to arrive\}. Then we could get the probability of A is $$P(A)=\int_0^{10}f_T(t)\,dt=\int_0^{10}\frac{1}{15}e^{-\frac{t}{15}}\,dt=1-e^{-\frac{2}{3}}.$$\indent
+So the probability it takes less than ten minutes for the next bus to arrive is $1-e^{-\frac{2}{3}}$.
+\subsection{}
+Assume that 90 percent of the buses arrive with in $t_0$ minutes. So we have $$\int_0^{t_0}f_T(t)\,dt=\int_0^{t_0}\frac{1}{15}e^{-\frac{t}{15}}\,dt=1-e^{-\frac{t_0}{15}}=0.9$$\indent
+So $t_0=15\ln{10}$. Which means Ninety percent of the buses arrive within $15\ln{10}$ minutes of the previous bus.
+
+
+\newpage
+a
+
+\end{document}
+
+The c.d.f. of Y is $$\begin{aligned}
+    F_Y(y)&=\int_0^y\,du\int_0^{y-u}f_{U,V}(u,v)\,dv=\int_0^y\,du\int_0^{y-u}\frac{1}{\Gamma(\alpha)\Gamma(\beta)}u^{\alpha-1}v^{\beta-1}e^{-(u+v)}\,dv\\
+    &=\frac{1}{\Gamma(\alpha)\Gamma(\beta)}\int_0^{y}u^{\alpha-1}e^{-u}\,du\int_0^{y-u}
+\end{aligned}$$

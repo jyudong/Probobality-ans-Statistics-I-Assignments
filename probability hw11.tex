@@ -1,0 +1,202 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{PROBABILITY AND STATISTICS I
+\\HOMEWORK XI}
+\author{\\Jianyu Dong   ~~2019511017}
+\date{May, 16~ 2021}
+
+\begin{document}
+    
+\maketitle
+\newpage
+
+\section{}
+\subsection{}
+First, since each $X_i$ has the p.d.f. $$p(x_i;\theta)=\sqrt{\theta}x^{\sqrt{\theta}-1},~0<x<1,~\theta>0$$\indent
+and $X_i$ are independent, the likelihood function is $$L(\theta)=\prod_{i=1}^n\sqrt{\theta}x_i^{\sqrt{\theta}-1}=\theta^{\frac{n}{2}}\left(\prod_{i=1}^nx_i\right)^{\sqrt{\theta}-1}$$\indent
+The logarithmic likelihood function is $$l(\theta)=\log L(\theta)=\frac{n}{2}\log\theta+(\sqrt{\theta}-1)\log(\prod_{i=1}^nx_i).$$\indent
+Then determine the differential coefficient of l $$\frac{d}{d\theta}l(\theta)=\frac{n}{2}\frac{1}{\theta}+\frac{1}{2\sqrt{\theta}}\log(\prod_{i=1}^nx_i).$$\indent
+By equating it to zero, we obtain that the maximum likelihood estimate $\hat{\theta}$ is $$\left(\frac{n}{\log(\prod_{i=1}^nx_i)}\right)^2$$\indent
+and so the maximum likelihood estimator is $$T(X_1,X_2,\dots,X_n)=\left(\frac{n}{\log(\prod_{i=1}^nx_i)}\right)^2.$$\indent
+Thus, the problem is solved.
+
+\subsection{}
+First, since each $X_i$ has the p.d.f. $$p(x_i;\theta)=\theta c^{\theta}x_i^{-(\theta+1)},~x_i>c,c>0,and~\theta>1$$\indent
+and $X_i$ are independent, the likelihood function is hence $$L(\theta)=\prod_{i=1}^n\theta c^{\theta}x_i^{-(\theta+1)}=\theta^nc^{n\theta}\left(\prod_{i=1}^nx_i\right)^{-(\theta+1)}.$$\indent
+The logarithmic likelihood function is $$l(\theta)=\log L(\theta)=n\log\theta+n\theta\log c-(\theta+1)\log(\prod_{i=1}^nx_i)$$\indent
+Then determine the differential coefficient of l $$\frac{d}{d\theta}l(\theta)=\frac{n}{\theta}+n\log c-\log(\prod_{i=1}^nx_i).$$\indent
+By equating it to zero, we obtain that the maximum likelihood estimate $\hat{\theta}$ is $$\frac{n}{\log(\prod_{i=1}^nx_i)-n\log c}$$\indent
+and so the maximum likelihood estimator is $$T(X_1,X_2,\dots,X_n)=\frac{n}{\log(\prod_{i=1}^nx_i)-n\log c}$$\indent
+Thus, the problem is solved.
+
+\subsection{}
+First, since each $X_i$ has the p.d.f. $$p(x_i;\theta,\mu)=\frac{1}{\theta}e^{-\frac{x_i-\mu} {\theta}},~x>\mu,\theta>0$$\indent
+and $X_i$ are independent, the likelihood function is hence $$L(\theta,\mu)=\prod_{i=1}^n\frac{1}{\theta}e^{-\frac{x_i-\mu}{\theta}}=\theta^{-n}exp(\frac{n\mu}{\theta}-\frac{\sum_{i=1}^nx_i}{\theta}).$$\indent
+The logarithmic likelihood function is $$l(\theta,\mu)=\log L(\theta,\mu)=-n\log\theta+\frac{n\mu}{\theta}-\frac{\sum_{i=1}^nx_i}{\theta}.$$\indent
+The partial derivatives of $l(\theta,\mu)$ are $$\frac{\partial l}{\partial\theta}=-\frac{n}{\theta}-\frac{n\mu}{\theta^2}+\frac{\sum_{i=1}^nx_i}{\theta^2}$$\indent
+and $$\frac{\partial l}{\partial \mu}=\frac{n}{\theta}>0$$\indent
+To maximize the likelihood function, we need to choose $\mu$ as large as possible. Let $X_{(j)}$ be the j-th minimum among $(X_i)_{i=1}^n$. Since x>$\mu$, the maximum likelihood estimator of $\mu$ is $$\hat{\mu}=X_{(1)}.$$\indent
+Then let $\frac{\partial l}{\partial \theta}=0$, we could get the maximum likelihood estimator of $\theta$ is $$\hat{\theta}=\frac{\sum_{i=1}^nx_i}{n}-x_{(1)}.$$
+
+\subsection{}
+First, since each $X_i$ has the p.d.f. $$p(x_i;\theta)=\frac{1}{2\theta}e^{-\left\rvert x_i\right\rvert/\theta},~\theta>0.$$\indent
+and $X_i$ are independent, the likelihood function is hence $$L(\theta)=\prod_{i=1}^n\frac{1}{2\theta}e^{-\left\rvert x_i\right\rvert/\theta}=\frac{1}{(2\theta)^n}exp(-\frac{\sum_{i=1}^n\left\rvert x_i\right\rvert}{\theta}).$$\indent
+The logarithmic likelihood function is $$l(\theta)=\log L(\theta)=-n\log 2\theta-\frac{\sum_{i=1}^n\left\rvert x_i\right\rvert}{\theta}.$$\indent
+Then determine the differential coefficient of l $$\frac{d l}{d\theta}=-\frac{n}{\theta}+\frac{\sum_{i=1}^n\left\rvert x_i\right\rvert}{\theta^2}.$$\indent
+By equating it to zero, we obtain that the maximum likelihood estimate $\hat{\theta}$ is $$\frac{\sum_{i=1}^n\left\rvert x_i\right\rvert}{n}$$\indent
+and so the maximum likelihood estimator is $$T(X_1,X_2,\dots,X_n)=\frac{\sum_{i=1}^n\left\rvert x_i\right\rvert}{n}.$$\indent
+Thus, the problem is solved.
+
+\subsection{}
+First, since each $X_i$ has the p.d.f. $$p(x_i;\theta)=1,~\theta-\frac{1}{2}<x<\theta+\frac{1}{2}$$\indent
+and $X_i$ are independent, the likelihood function is hence $$L(\theta)=\prod_{i=1}^n1=1.$$\indent
+The logarithmic likelihood function is $$l(\theta)=\log L(\theta)=0.$$\indent
+Then determine the differential coefficient of l $$\frac{dl}{d\theta}=0$$\indent
+for any $\theta\in R$. But there must be that $$\theta-\frac{1}{2}<x_i<\theta+\frac{1}{2},~for ~i=1,2,\dots,n.$$\indent
+Then we could let $X_{(j)}$ be the j-th minimum among $(X_i)_{i=1}^n$. So we get $$\theta-\frac{1}{2}<x_{(1)},~\theta+\frac{1}{2}>x_{(n)}.$$\indent
+Then we could determine that $$x_{(n)}-\frac{1}{2}<\theta<x_{(1)}+\frac{1}{2}.$$\indent
+Since the likelihood function is constant, to maximize the likelihood function, the M.L.E of $\theta$ could be any statistic $u(X_1,X_2,\dots,X_n)$ which satisfies that $$x_{(n)}-\frac{1}{2}<u(X_1,X_2,\dots,X_n)<x_{(1)}+\frac{1}{2}.$$
+
+\subsection{}
+First, since each $X_i$ has the p.d.f. $$p(x_i;\theta_1,\theta_2)=\frac{1}{\theta_2-\theta_1},~\theta_1<x<\theta_2$$\indent
+and $X_i$ are independent, the likelihood function is hence $$L(\theta_1,\theta_2)=\prod_{i=1}^n\frac{1}{\theta_2-\theta_1}=\frac{1}{(\theta_2-\theta_1)^n}.$$\indent
+The logarithmic likelihood function is $$l(\theta)=\log L(\theta)=-n\log(\theta_2-\theta_1).$$\indent
+The partial derivatives of $l(\theta_1,\theta_2)$ are $$\frac{dl}{d\theta_1}=\frac{n}{\theta_2-\theta_1}>0$$\indent
+and $$\frac{dl}{d\theta_2}=-\frac{n}{\theta_2-\theta_1}<0.$$\indent
+So to maximize the likelihood function L, we need to choose $\theta_1$ as large as possible and choose $\theta_2$ as small as possible.\\\indent
+Let $X_{(j)}$ be the j-th minimum among $(X_i)_{i=1}^n$. Then by the relation, we get the maximum likelihood estimators are $$\hat{\theta_1}=X_{(1)},~\hat{\theta_2}=X_{(n)}.$$
+
+
+\section{}
+\subsection{}
+Sicen X follows the uniform distribution on ($\theta$,2$\theta$) for $\theta>0$, we could get the mean and variance of X is $\mathbf{E}(X)=\frac{3}{2}\theta$ and $\mathbf{Var}(X)=\mathbf{E}(X^2)-\mathbf{E}(X)^2=\frac{1}{12}\theta^2$. Let $T=\frac{2}{3}\overline{X}_n$ be a statistic. We could determine that $$\mathbf{E}(T)=\frac{2}{3}\mathbf{E}(\overline{X}_n)=\frac{2}{3n}\sum_{i=1}^n\mathbf{E}(X_i)=\theta.$$\indent
+Thus, $\hat{\theta}=\frac{2}{3}\overline{X}_n$ is an unbiasedness estimator.\\\indent
+We get that $\lim_{n\to\infty}\mathbf{E}(\hat{\theta})=\theta$. Then we could determine that $$\lim_{n\to\infty}\mathbf{Var}(\hat{\theta})=\lim_{n\to\infty}\frac{4}{9n^2}\sum_{i=1}^n\mathbf{Var}(X_i)=\lim_{n\to\infty}\frac{\theta^2}{27n}=0$$\indent
+By the theorem, we have that $\hat{\theta}=\frac{2}{3}\overline{X}_n$ is a consistent estimator.\\\indent
+So in a word, $\hat{\theta}=\frac{2}{3}\overline{X}_n$ is an unbiasedness estimator and consistent estimator.
+\subsection{}
+First, since each $X_i$ has the p.d.f. $$f(x;\theta)=\frac{1}{\theta},~0<\theta<x<2\theta$$\indent
+and $X_i$ are independent, the likelihood function is hence $$L(\theta)=\prod_{i=1}^n\frac{1}{\theta}=\theta^{-n},~\theta>0.$$\indent
+To let the likelihood function as large as possible, we need to let $\theta$ as small as possible. Let $X_{(j)}$ be the j-th minimum among $(X_i)_{i=1}^n$. So there are $$\frac{X_{(n)}}{2}<\theta<X_{(1)}.$$\indent
+So the M.L.E. of $\theta$ is $\hat{\theta}=\frac{X_{(n)}}{2}$.\\\indent
+We could determine that $$\mathbf{E}(\hat{\theta})=\frac{1}{2}\mathbf{E}(X_{(n)})$$\indent
+Then we need to determine the p.d.f. of $X_{(n)}$. The c.d.f. of $X_{(n)}$ is $$F(x_{(n)})=\prod_{i=1}^nP(X_i\leqslant x_{(n)})=\left(\frac{x_{(n)}}{\theta}-1\right)^n,~\theta<x_{(n)}<2\theta.$$\indent
+Then we could determine that the p.d.f. of $X_{(n)}$ is $$f(x_{(n)})=\frac{d F}{dx_{(n)}}=\frac{n}{\theta}\left(\frac{x_{(n)}}{\theta}-1\right)^{n-1},~\theta<x_{(n)}<2\theta.$$\indent
+So we have the expectation of $X_{(n)}$ is $$\mathbf{E}(X_{(n)})=\int_{\theta}^{2\theta}x_{(n)}f(x_{(n)})\,dx_{(n)}=2\theta-\frac{\theta}{n+1}.$$\indent
+And we could determine that $$\mathbf{E}(X_{(n)}^2)=\int_{\theta}^{2\theta}x_{(n)}^2f(x_{(n)})\,dx_{(n)}=4\theta^2-\frac{4\theta^2}{n+1}+\frac{2\theta^2}{(n+1)(n+2)}.$$\indent
+So that $$\mathbf{E}(\hat{\theta})=\theta-\frac{\theta}{2(n+1)}\neq\theta$$\indent
+Thus, is is not unbiased.\\\indent
+Then we have $$\lim_{n\to\infty}\mathbf{E}(\hat{\theta})=\frac{1}{2}\lim_{n\to\infty}\mathbf{E}(X_{(n)})=\frac{1}{2}\lim_{n\to\infty}\left(2\theta-\frac{\theta}{n+1}\right)=\theta,$$\indent
+and $$\lim_{n\to\infty}\mathbf{Var}(\hat{\theta})=\frac{1}{4}\lim_{n\to\infty}\mathbf{Var}(X_{(n)})=\frac{1}{4}\lim_{n\to\infty}\left(\mathbf{E}(X_{(n)}^2)-\mathbf{E}(X_{(n)})^2\right)=\frac{1}{4}\lim_{n\to\infty}\frac{n\theta^2}{(n+1)^2(n+2)}=0$$\indent
+Which means that the M.L.E. of $\theta$ is consistent.
+
+
+\section{}
+Since $(X_i)_{i=1}^n$ is a random sample from $\Gamma(\alpha=3,\beta=\theta)$ distribution, $\theta\in(0,\infty)$, we could get the likelihood function is hence $$L(\theta)=\prod_{i=1}^n\frac{\theta^3}{2}x_i^2e^{-\theta x_i}=\frac{\theta^{3n}}{2^n}(\prod_{i=1}^nx_i)^2exp(-\theta(\sum_{i=1}^nx_i)).$$\indent
+The logarithmic likelihood function is $$l(\theta)=\log L(\theta)=3n\log\theta-n\log2+2\sum_{i=1}^n\log x_i-\theta(\sum_{i=1}^nx_i).$$\indent
+Then determine the differential coefficient of l $$\frac{dl}{d\theta}=\frac{3n}{\theta}-\sum_{i=1}^nx_i.$$\indent
+By equating it to zero, we obtain that the maximum likelihood estimate $\hat{\theta}$ is $$\frac{3n}{\sum_{i=1}^nx_i}$$\indent
+and so the maximum likelihood estimator is $$T(X_1,X_2,\dots,X_n)=\frac{3n}{\sum_{i=1}^nx_i}.$$
+
+
+\section{}
+Assume that there exist the M.L.E. of $\mu$ and $\sigma^2$.\\\indent
+Since X $\sim$ N($\mu,\sigma^2$) and we only have one observation, we could get the likelihood function is $$L(\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}exp\left(-\frac{1}{2}\left(\frac{x_1-\mu}{\sigma}\right)^2\right).$$\indent
+and $\sigma$ must be positive. The logarithmic likelihood function is $$l(\mu,\sigma^2)=\log L(\mu,\sigma^2)=-\log(\sqrt{2\pi}\sigma)-\frac{(x_1-\mu)^2}{2\sigma^2}$$\indent
+The partial derivatives of l($\mu,\sigma$) are $$\frac{\partial l}{\partial \mu}=\frac{x_1-\mu}{\sigma^2}$$\indent
+and $$\frac{\partial l}{\partial\sigma}=\frac{(x_1-\mu)^2-\sigma^2}{\sigma^3}.$$\indent
+Set both equal to zero and $\sigma>0$, we get that $\mu=x_1$ and $\sigma$ has no solution. So the assumption is wrong. Which means that the M.L.E. of $\mu$ and $\sigma^2$ doesn't exist.
+
+
+\section{}
+Since $Y_1<Y_2<\dots<Y_n$ are the order statistics of a random sample from the distribution with p.d.f. $$f(x;\theta)=1,~for ~\theta-\frac{1}{2}\leqslant x\leqslant\theta+\frac{1}{2},-\infty<\theta<\infty,$$\indent
+there must be that $Y_i\in(\theta-\frac{1}{2},\theta+\frac{1}{2})$ for all i=1,2,\dots,n. Then we get that $$\theta-\frac{1}{2}\leqslant Y_1,~\theta+\frac{1}{2}\geqslant Y_n.$$\indent
+Thus, we could determine that $$Y_n-\frac{1}{2}\leqslant \theta\leqslant Y_1+\frac{1}{2}.$$\indent
+Since $X_i$ are independent, we could get the likelihood function is hence $$L(\theta)=\prod_{i=1}^n1=1,~for ~Y_n-\frac{1}{2}\leqslant \theta\leqslant Y_1+\frac{1}{2},$$\indent
+which is a constant. To maximize the likelihood function, the estimate $\hat{\theta}$ could be any real number $\in[Y_n-\frac{1}{2},Y_1+\frac{1}{2}]$. Which means that every estimate $u(X_1,X_2,\dots,X_n)$ such that $$Y_n-\frac{1}{2}\leqslant u(X_1,X_2,\dots,X_n)\leqslant Y_1+\frac{1}{2}$$\indent
+is a M.L.E. of $\theta$.\\\indent
+Since $Y_1+\frac{1}{2}\geqslant Y_n-\frac{1}{2}$, we have $Y_1+1-Y_n\geqslant 0$.\\\indent
+We could calculate that $$\frac{4Y_1+2Y_n+1}{6}-Y_n+\frac{1}{2}=\frac{2}{3}(Y_1+1-Y_n)\geqslant 0$$\indent
+and $$Y_1+\frac{1}{2}-\frac{4Y_1+2Y_n+1}{6}=\frac{1}{3}(Y_1+1-Y_n)\geqslant 0.$$\indent
+So we get $$Y_n-\frac{1}{2}\leqslant \frac{4Y_1+2Y_n+1}{6}\leqslant Y_1+\frac{1}{2},$$\indent
+which means that ($4Y_1+2Y_n+1$)/6 is a statistic.\\\indent
+We could calculate that $$\frac{Y_1+Y_n}{2}-Y_n+\frac{1}{2}=\frac{1}{2}(Y_1+1-Y_n)\geqslant 0$$\indent
+and $$Y_1+\frac{1}{2}-\frac{Y_1+Y_n}{2}=\frac{1}{2}(Y_1+1-Y_n)\geqslant 0.$$\indent
+So we get that $$Y_n-\frac{1}{2}\leqslant \frac{Y_1+Y_n}{2}\leqslant Y_1+\frac{1}{2},$$\indent
+which means that ($Y_1+Y_n$)/2 is a statistic.\\\indent
+We could calculate that $$\frac{2Y_1+4Y_n-1}{6}-Y_n+\frac{1}{2}=\frac{1}{3}(Y_1+1-Y_n)\geqslant 0$$\indent
+and $$Y_1+\frac{1}{2}-\frac{2Y_1+4Y_n-1}{6}=\frac{2}{3}(Y_1+1-Y_n)\geqslant 0,$$\indent
+which means that ($2Y_1+4Y_n-1$)/6 is a statistic.\\\indent
+In a word, ($4Y_1+2Y_n+1$)/6, ($Y_1+Y_n$)/2 and ($2Y_1+4Y_n-1$)/6 are three statistics. So uniqueness is not, in general, a property of a M.L.E..
+
+
+\section{}
+Since each $X_i$ has the p.d.f. $$f(x_i;\theta)=\frac{1}{\theta}e^{-\frac{x}{\theta}},x>0$$\indent
+and $X_i$ are independent, the likelihood function is hence $$L(\theta)=\prod_{i=1}^n\frac{1}{\theta}e^{-\frac{x}{\theta}}=\theta^{-n}exp\left(-\frac{\sum_{i=1}^nx_i}{\theta}\right).$$\indent
+The logarithmic likelihood function is $$l(\theta)=\log L(\theta)=-n\log\theta-\frac{\sum_{i=1}^nx_i}{\theta}.$$\indent
+Then determine the differential coefficient of l $$\frac{dl}{d\theta}=-\frac{n}{\theta}+\frac{\sum_{i=1}^nx_i}{\theta^2}.$$\indent
+By equating it to zero, we obtain that the maximum likelihood estimate $\hat{\theta}$ is $$\frac{\sum_{i=1}^nx_i}{n}$$\indent
+and so the maximum likelihood estimator is $$T(X_1,X_2,\dots,X_n)=\frac{\sum_{i=1}^nX_i}{n}.$$\indent
+Then we could determine that $$\mathbf{P}(X\leqslant 2)=\int_0^2\frac{1}{\hat{\theta}}e^{-\frac{x}{\hat{\theta}}}=1-exp\left(-\frac{2n}{\sum_{i=1}^nx_i}\right)$$
+
+
+\section{}
+Since $(X_i)_{i=1}^{55}$ is a random sample from the Poisson distribution, we could get the p.d.f. of X is $$p(x;\lambda)=\frac{e^{-\lambda}\lambda^x}{x!},~x=0,1,2,\dots$$\indent
+zero elsewhere and $X_i$ are independent, the likelihood function is hence $$L(\lambda)=\prod_{i=1}^{55}\frac{e^{-\lambda}\lambda^{x_i}}{x_i!}=e^{-55\lambda}\lambda^{\sum_{i=1}^{55}x_i}/(\prod_{i=1}^{55}x_i!).$$\indent
+The logarithmic likelihood function is $$l(\lambda)=\log L(\lambda)=-55\lambda+(\sum_{i=1}^{55}x_i)\log\lambda-\log(\prod_{i=1}^{55}x_i!).$$\indent
+Then determine the differential coefficient of l $$\frac{dl}{d\theta}=-55+\frac{\sum_{i=1}^{55}x_i}{\lambda}.$$\indent
+By equating it to zero, we obtain that the maximum likelihood estimate $\hat{\lambda}$ is $$\frac{\sum_{i=1}^{55}x_i}{55}$$\indent
+Based on the data given by the table, we could calculate that $$\hat{\lambda}=\frac{\sum_{i=1}^{55}x_i}{55}=\frac{116}{55}.$$\indent
+Then we could get that $$\mathbf{P}(X=2)=\frac{e^{-\hat{\lambda}}\hat{\lambda}^2}{2!}\approx 0.27$$
+
+\section{}
+Since $(X_i)_{i=1}^n$ is a random sample from the Poisson distribution with unknown parameter $\theta \in(0,2]$, we could get the p.d.f. of X is $$p(x;\theta)=\frac{e^{-\theta}\theta^x}{x!},~for~x=0,1,2,\dots$$\indent
+zero elsewhere and $X_i$ are independent, the likelihood function is hence $$L(\theta)=\prod_{i=1}^n\frac{e^{-\theta}\theta^{x_i}}{x_i!}=e^{-n\theta}\theta^{\sum_{i=1}^nx_i}/(\prod_{i=1}^nx_i!).$$\indent
+The logarithmic likelihood function is $$l(\theta)=\log L(\theta)=-n\theta+(\sum_{i=1}^nx_i)\log\theta-\log(\prod_{i=1}^nx_i!).$$\indent
+Then determine the differential coefficient of l $$\frac{dl}{d\theta}=-n+\frac{\sum_{i=1}^nx_i}{\theta}.$$\indent
+Then we need to talk about the relationship of the value of $\overline{X}_n$ and 2.\\\indent
+If $2\geqslant\overline{X}_n$, to maximize the likelihood function, we need to let $\frac{dl}{d\theta}=0$, then we get that the maximum likelihood estimate of $\theta$ is $$\hat{\theta}=\overline{X}_n.$$\indent
+If $2<\overline{X}_n$, we get that $\frac{dl}{d\theta}>0$ all the time. So $l(\theta)$ increases with $\theta$ increasing. To maximize the likelihood function, we need to get the largest value as the estimate of $\theta$. Which means that the maximum likelihood estimate of $\theta$ is $$\hat{\theta}=2$$\indent
+In a word, the maximum likelihood estimate of $\theta$ is $$\hat{\theta}=\min\{\overline{X}_n,2\}.$$
+
+\section{}
+If $\theta=1$, we have the p.d.f. of X is $$f(x;\theta=1)=\frac{1}{\sqrt{2\pi}}exp(-\frac{x^2}{2}),~for ~-\infty<x<\infty.$$\indent
+Since $(X_i)_{i=1}^n$ are independent, we could get the likelihood function is $$L_1=\prod_{i=1}^n\frac{1}{\sqrt{2\pi}}exp(-\frac{x_i^2}{2})=(2\pi)^{-\frac{n}{2}}exp(-\frac{\sum_{i=1}^nx_i^2}{2}).$$\indent
+The logarithmic likelihood function is $$l_1=\log L_1=-\frac{n}{2}\log(2\pi)-\frac{\sum_{i=1}^nx_i^2}{2}.$$\indent
+If $\theta=2$, we have the p.d.f. of X is $$f(x,\theta=2)=\frac{1}{\pi(1+x^2)},~for ~-\infty<x<\infty.$$\indent
+Since $(X_i)_{i=1}^n$ are independent, we could get the likelihood function is $$L_2=\prod_{i=1}^n\frac{1}{\pi(1+x_i^2)}=\pi^{-n}\prod_{i=1}^n(1+x_i^2)^{-1}.$$\indent
+The logarithmic likelihood function is $$l_2=\log L_2=-n\log\pi-\sum_{i=1}^n\log(1+x_i^2).$$\indent
+To determine the maximum likelihood estimate of $\theta$, we need to let the likelihood function as large as possible. Which means that let the logarithmic likelihood function as large as possible.\\\indent
+If $l_1>l_2$, which means that $$\sum_{i=1}^nx_i^2-2\sum_{i=1}^n\log(1+x_i^2)<n(\log \pi-\log 2),$$\indent
+we have that the M.L.E of $\theta$ is $\hat{\theta}=1$.\\\indent
+If $l_1<l_2$, which means that $$\sum_{i=1}^nx_i^2-2\sum_{i=1}^n\log(1+x_i^2)>n(\log \pi-\log 2),$$\indent
+we have that the M.L.E of $\theta$ is $\hat{\theta}=2$.\\\indent
+If $l_1=l_2$, which means that $$\sum_{i=1}^nx_i^2-2\sum_{i=1}^n\log(1+x_i^2)=n(\log \pi-\log 2),$$\indent
+we have that the M.L.E. of $\theta$ are $\hat{\theta}=1$, $\hat{\theta}=2$.
+
+\end{document}

@@ -1,0 +1,279 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{PROBABILITY AND STATISTICS I
+\\HOMEWORK II}
+\author{\\Jianyu Dong   ~~2019511017}
+\date{March, 8 2021}
+\begin{document}
+\maketitle
+\newpage
+\section{}
+Let A$_{0}$ = \{ A shopper chooses brand A on his first and second purchase and brand B on his third and fourth purchase \} 
+\newline
+\indent
+Let A$_{1}$ = \{ The shopper choose brand A on his first purchase \}\\
+\indent
+Let A$_{2}$ = \{ The shopper choose brand A on his second purchase \}\\
+\indent
+Let A$_{3}$ = \{ The shopper choose brand B on his third purchase \}\\
+\indent
+Let A$_{4}$ = \{ The shopper choose brand B on his fourth purchase \}\\
+\indent
+Then we have :
+\begin{equation*}
+    A_0 = A_1\cap A_2\cap A_3\cap A_4
+\end{equation*}
+\begin{equation*}
+    P(A_1) = \frac{1}{2},
+    P(A_2|A_1) = \frac{1}{3},
+    P(A_3|A_1\cap A_2) = \frac{2}{3},
+    P(A_4|A_1\cap A_2\cap A_3) = \frac{1}{3}
+\end{equation*}
+\begin{equation*}
+    P(A_0) = P(A_1)\times P(A_2|A_1)\times P(A_3|A_1\cap A_2)\times P(A_4|A_1\cap A_2\cap A_3) = \frac{1}{27}
+\end{equation*}
+\indent
+So the probability of both his first and second purchases will be brand A and both his third and fourth purchases will be brand B is $\frac{1}{27}$
+
+
+\section{}
+If after swapping n times the black ball is still in box A, there must be even times we pick the black ball and swap it with a white ball.\\
+\indent
+Let C = \{After swapping n times, the black ball is still in box A\}\\
+\indent
+(1).If n is odd, there could be 0,2,4,6...(n-1) times we pick the black ball and swap it with a white ball. Then the probability of C is :\\
+\begin{equation*}
+    P(C) = \sum_{k=0}^\frac{n-1}{2}\binom{n}{2k} (\frac{1}{3})^{2k}\times (\frac{2}{3})^{n-2k}
+\end{equation*}\\ 
+\indent
+(2).If n in even, there could be 0,2,4,6...n times we pick the black ball and swap it with a white ball. Then the probability of C is :\\
+\begin{equation*}
+    P(C) = \sum_{k=0}^\frac{n}{2}\binom{n}{2k} (\frac{1}{3})^{2k}\times (\frac{2}{3})^{n-2k}
+\end{equation*}
+\indent
+We can calculate that:$$P(C) = \frac{1+3^n}{2\times 3^n}$$
+
+\section{}
+a ba a ba
+
+\section{}
+Let $A_0$ = \{ The first and third cards are spades, the second and fourth cards are red\}
+\indent
+Let $A_1$ = \{ The first card is spade.\}\\
+\indent
+Let $A_2$ = \{ The second card is red\}\\
+\indent
+Let $A_3$ = \{ The third card is spade\}\\
+\indent
+Let $A_4$ = \{ The fourth card is red\}\\
+\indent
+We have that:$$P(A_1) = \frac{13}{52},~P(A_2~|~A_1) = \frac{P(A_1\cap A_2)}{P(A_1)} = \frac{26}{51},$$$$~P(A_3~|~A_1\cap A_2) = \frac{P(A_3\cap A_1\cap A_2)}{P(A_1\cap A_2)} = \frac{12}{50},~P(A_4~|~A_1\cap A_2\cap A_3) = \frac{P(A_4\cap A_1\cap A_2\cap A_3)}{P(A_1\cap A_2\cap A_3)} = \frac{25}{49}$$
+\indent
+Then we could get that:$$P(A_0) = P(A_1\cap A_2\cap A_3\cap A_4) = P(A_1)\times P(A_2~|~A_1)\times P(A_3~|~A_1\cap A_2)\times P(A_4~|~A_1\cap A_2\cap A_3) = \frac{13}{833}$$
+\indent
+Let $B_0$ = \{ The first and third cards are red, the second and fourth cards are spades\}
+\indent
+Let $B_1$ = \{ The first card is red.\}\\
+\indent
+Let $B_2$ = \{ The second card is spade\}\\
+\indent
+Let $B_3$ = \{ The third card is red\}\\
+\indent
+Let $B_4$ = \{ The fourth card is spade\}\\
+\indent
+We have that:$$P(B_1) = \frac{26}{52},~P(B_2~|~B_1) = \frac{P(B_1\cap B_2)}{P(B_1)} = \frac{13}{51},$$$$~P(B_3~|~B_1\cap B_2) = \frac{P(B_3\cap B_1\cap B_2)}{P(B_1\cap B_2)} = \frac{25}{50},~P(B_4~|~B_1\cap B_2\cap B_3) = \frac{P(B_4\cap B_1\cap B_2\cap B_3)}{P(B_1\cap B_2\cap B_3)} = \frac{12}{49}$$
+\indent
+Then we could get that:$$P(B_0) = P(B_1\cap B_2\cap B_3\cap B_4) = P(B_1)\times P(B_2~|~B_1)\times P(B_3~|~B_1\cap B_2)\times P(B_4~|~B_1\cap B_2\cap B_3) = \frac{13}{833}$$
+\indent
+Since $A_0$ and $B_0$ are disjoint, we can get the probability of  the spades and red cards alternate is $$P(A_0) + P(B_0) = \frac{26}{833}$$
+
+\section{}
+Since C$_{1}$ and C$_{2}$ are independent events, according to the definition of independent events we can get:
+\subsection{}
+\begin{equation*}
+    P(C_1\cap C_2) = P(C_1)\times P(C_2) = 0.6\times 0.3 = 0.18
+\end{equation*}
+\subsection{} 
+\begin{equation*}
+   P(C_1\cup C_2) = P(C_1) + P(C_2) - P(C_1\cap C_2) = 0.6+0.3-0.18 = 0.72
+\end{equation*}
+\subsection{}
+Since C$_1$ and C$_2$ are independent events and P$(C_2)$ +P$(C_2^c)$ = 1, we have C$_1$ and C$_2^c$ are independent events and P$(C_2^c)$ = 0.7.\\
+\indent
+Then we have:
+\begin{equation*}
+    P(C_1\cap C_2^c) = P(C_1)\times P(C_2^c) = 0.6\times 0.7 = 0.42
+\end{equation*}
+\begin{equation*}
+    P(C_1\cup C_2^c) = P(C_1) + P(C_2^c) - P(C_1\cap C_2^c) = 0.6+0.7-0.42 = 0.88
+\end{equation*}
+
+\section{}
+Let A$_1$ = \{Player A win in his first throw\}\\
+\indent
+Let A$_2$ = \{Player A win in his second throw\}\\
+\indent
+Let A$_3$ = \{Player A win in his third throw\}\\
+\indent
+Let B$_1$ = \{Player B win in his first throw\}\\
+\indent
+Let B$_2$ = \{Player B win in his second throw\}\\
+\indent
+Let B$_3$ = \{Player B win in his third throw\}\\
+\indent
+Since player A and B play a sequence of independent games, according to the question stem, we can easily get that:
+\begin{equation*}
+    P(A ～win ～the ～game) = P(A_1) + P(A_1^c\cap B_1^c\cap A_2) +P(A_1^c\cap B_1^c\cap A_2^c\cap B_2^c\cap A_3) = \frac{1}{6} + \frac{5}{6}\times \frac{4}{6}\times \frac{3}{6} + \frac{5}{6}\times \frac{4}{6}\times \frac{3}{6}\times \frac{2}{6}\times \frac{5}{6} = \frac{169}{324}
+\end{equation*}
+\indent
+Since either A or B will win the game, we have:
+\begin{equation*}
+    P(B ~win ~the ~game) = 1 - P(A ～win ～the ～game) = 1 - \frac{169}{324} = \frac{155}{324}
+\end{equation*}
+In a word, the probability of player A win the game is $\frac{169}{324}$, the probability of player B win the game is $\frac{155}{324}$
+
+\section{}
+Let A = \{ At least one six in four independent casts of a six-sided die \}, then $A^c$ = \{ There is no six in four independent casts of a six-sided die \}.\\
+\indent
+We can easily get that:
+\begin{equation*}
+    P(A^c) = (\frac{5}{6})^4 = \frac{625}{1296}
+\end{equation*}
+\begin{equation*}
+    P(A) = 1 - P(A^c) = \frac{671}{1296} \approx 0.5177
+\end{equation*}
+\indent
+Let B = \{ At least a pair of sixs in 24 independent casts of a pair of dice\}, then $B^c$ = \{ There is no pair of sixs in 24 independent casts of a pair of dice\}\\
+\indent
+We could caculate that:
+\begin{equation*}
+    P(B^c) = (\frac{35}{36})^{24}
+\end{equation*}
+\begin{equation*}
+    P(B) = 1 - P(B^c) = 1 - (\frac{35}{36})^{24}\approx 0.4914
+\end{equation*}
+
+\section{}
+Let $\Omega$ = \{ The person draw two cards from an ordinary deck of cards without replacement \}, and $\Omega$ is a simple sample space. We can get that:
+\begin{equation*}
+    \left\lvert \Omega\right\rvert = \binom{52}{2} = 1326
+\end{equation*}
+\indent
+Let A = \{ The person get two cards in same suit\}. We have:
+\begin{equation*}
+    A\subset \Omega ~and~ \left\lvert A \right\rvert = \binom{4}{1}\times \binom{13}{2} = 312
+\end{equation*}
+\indent
+Then, we have that:
+\begin{equation*}
+    P(A) = \frac{\left\lvert A\right\rvert }{\left\lvert \Omega \right\rvert } = \frac{4}{17}
+\end{equation*}
+\indent
+If let the bet is fair, there must be that:
+\begin{equation*}
+    b\times P(A) = 1
+\end{equation*}
+\indent
+So b = 4.25
+
+\section{}
+According to the definition of conditional probability, we have that:
+\begin{equation*}
+    P(B|A) = \frac{P(A\cap B)}{P(A)}
+\end{equation*}
+\indent
+We know that P($A\cap B$) = P(A) + P(B) - P($A\cup B$) = P(A) + 1 - P($A\cup B$) - P($B^c$) $\geq$ P(A) -  P($B^c$), which uses 1 - P($A\cup B$) $\geq$ 0\\
+\indent
+We get that:
+\begin{equation*}
+    P(B~|~A) = \frac{P(A\cap B)}{P(A)} \geq \frac{P(A)-P(B^c)}{P(A)} \geq 1-\frac{P(B^c)}{P(A)}
+\end{equation*}
+
+\section{}
+Since A and B are mutually exclusive, we get that $A\cap B^c$ = A.\\
+\indent
+According to the definition of conditional probability, we have:
+\begin{equation*}
+    P(A~|~B^c) = \frac{P(A\cap B^c)}{P(B^c)} = \frac{P(A)}{1-P(B)}
+\end{equation*}
+
+\section{}
+If $A\subset B$ and P(B)>0, we can get that $A\cap B = A$.\\
+\indent
+According to the multiplication rule, we have:
+\begin{equation*}
+    P(A) = P(A\cap B) = P(A~|~B)\times P(B)\leq P(A~|~B)
+\end{equation*}
+\indent
+Using P(B) $\leq $ 1, we prove that P(A) $\leq$ P(A | B)\\
+
+\section{}
+According to the definition of conditional probability, we have:
+\begin{equation*}
+    P(A~|~B) = \frac{P(A\cap B)}{P(B)}
+\end{equation*}
+\indent
+We know that P($A\cap B$) = P(A) + P(B) - P($A\cup B$) $ \leq $ P(A) = p. Which says that:
+\begin{equation*}
+    P(A~|~B) = \frac{P(A\cap B)}{P(B)} \leq \frac{p}{1-\varepsilon }
+\end{equation*}
+\indent
+We know that P($A\cap B$) = P(A) + P(B) - P($A\cup B$) $\geq$ P(A) + P(B) -1 = p -$\varepsilon $. Which says that:
+\begin{equation*}
+    P(A~|~B) = \frac{P(A\cap B)}{P(B)} \geq \frac{p-\varepsilon }{1-\varepsilon }
+\end{equation*}
+\indent
+In summary, there is:
+\begin{equation*}
+    \frac{p-\varepsilon }{1-\varepsilon }~\leq~ P(A~|~B) ~\leq~ \frac{p}{1-\varepsilon}
+\end{equation*}
+
+\section{}
+For any event B, if P(A) = 0, we can easily get that P($A\cap B$) = 0, which says that P($A\cap B$) = P(A)$\times$ P(B) = 0.Then A is independent with any event B has been proven.
+
+\section{}
+According to the definition of conditional probability, we have:$$P(A~|~C) = \frac{P(A\cap C)}{P(C)}$$
+\indent
+If ${\{B_j\}}_{j=1}^k$ is a partition of $\Omega $, we have that: $$P(A\cap C) = \sum_{j = 1}^{k} P(A\cap C\cap B_j) $$
+\indent
+Then $$P(A~|~C) = \frac{P(A\cap C)}{P(C)} = \sum_{j = 1}^{k} \frac{P(B_j\cap C)}{P(C)}\times \frac{P(A\cap C\cap B_j)}{P(B_j\cap C)} = \sum_{j = 1}^{k} P(B_j~|~C)\times P(A~|~B_j\cap C)  $$
+\indent
+Which proves that if ${\{B_j\}}_{j=1}^k$ is a partition of $\Omega $, for any A and C:$$P(A~|~C) = \sum_{j = 1}^{k} P(B_j~|~C)\times P(A~|~B_j\cap C)$$
+
+\section{}
+Since 0 < P(A) < 1, 0 < P(B) < 1, according to the definition of conditional probability, we have:$$P(A~|~B) + P(A^c~|~B^c) = \frac{P(A\cap B)}{P(B)} + \frac{P(A^c\cap B^c)}{P(B^c)} =1 ~~~~~~~(*)$$
+\indent
+We know that $$P(A^c\cap B^c) = P((A\cup B)^c) = 1 - P(A\cup B) = 1 - P(A) - P(B) + P(A\cap B)$$ $$P(B^c) = 1 - P(B)$$
+\indent
+Then ($*$) change into:$$P(A\cap B) = P(A)\times P(B)$$
+\indent
+Which says that A and B are independent.
+
+\section{}
+If P(A) > 0 and P(B) > 0, A and B are independent, we have P($A\cap B$) = P(A) $\times$ P(B) > 0. While P($\varnothing $) = 0, so $A\cap B \neq \varnothing $.
+\end{document}

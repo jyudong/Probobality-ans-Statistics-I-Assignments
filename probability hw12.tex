@@ -1,0 +1,114 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{PROBABILITY AND STATISTICS I
+\\HOMEWORK XII}
+\author{\\Jianyu Dong   ~~2019511017}
+\date{May, 21~ 2021}
+
+\begin{document}
+    
+\maketitle
+\newpage
+
+\section{}
+First, since $X_i$ are random sample from a gamma distribution with unknown parameters $\alpha$ and $\beta$, we could get the p.d.f. of $X_i$ is $$f(x_i;\alpha,\beta)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x_i^{\alpha-1}e^{-\beta x_i},~for x_i>0,$$\indent
+and $X_i$ are independent, the likelihood function is $$L(\alpha,\beta)=\prod_{i=1}^n\frac{\beta^{\alpha}}{\Gamma(\alpha)}x_i^{\alpha-1}e^{-\beta x_i}=\left(\frac{\beta^{\alpha}}{\Gamma(\alpha)}\right)^n\left(\prod_{i=1}^nx_i\right)^{\alpha-1}exp\left(-\beta\sum_{i=1}^nx_i\right).$$\indent
+The logarithmic likelihood function is $$l(\alpha,\beta)=\log L(\alpha,\beta)=n\alpha\log\beta-n\log(\Gamma(\alpha))+(\alpha-1)\sum_{i=1}^n\log x_i-\beta\sum_{i=1}^nx_i.$$\indent
+We notice the derivative of l with respect to $\beta$ is $$\frac{dl}{d\beta}=\frac{n\alpha}{\beta}-\sum_{i=1}^nx_i.$$\indent
+By equating it to zero, we get the M.L.E. of $\alpha/\beta$ is $$\frac{\sum_{i=1}^nx_i}{n}.$$
+
+\section{}
+First, since $(X_i)_{i=1}^{21}$ are random sample from an exponential distribution with mean $\mu>0$, we could get the p.d.f. of $X_i$ is $$f(x_i;\mu)=\frac{1}{\mu}exp(-\frac{x_i}{\mu}),~for ~x_i>0,$$\indent
+and $X_i$ are independent, the likelihood function is $$L(\mu)=\prod_{i=1}^{21}\frac{1}{\mu}exp(-\frac{x_i}{\mu})=\mu^{-21}exp(-\frac{\sum_{i=1}^{21}x_i}{\mu}).$$\indent
+The logarithmic likelihood function is $$l(\mu)=\log L(\mu)=-21\log\mu-\frac{\sum_{i=1}^{21}x_i}{\mu}.$$\indent
+According to the question, we have that there is an integer $j\in\{1,2,\dots,21\}$, such that $$\frac{\sum_{i=1,i\neq j}^{21}x_i}{20}=6,~and~x_j>15.$$\indent
+We could determine that $$\frac{dl}{d\mu}=-\frac{21}{\mu}+\frac{\sum_{i=1}^{21}x_i}{\mu^2}=\frac{\sum_{i=1}^{21}x_i-21\mu}{\mu^2}.$$\indent
+By equating it to zero, we have that $$\mu=\frac{\sum_{i=1}^{21}x_i}{21}=\frac{120+x_j}{21}>\frac{45}{7}.$$\indent
+And the logarithmic likelihood function is $$l(\mu)=-21\log\mu-21,$$\indent
+which is a decrease function of $\mu$. Thus, to maximize the logarithmic likelihood function, we need to choose the smallest $\mu$. Since $\mu>\frac{45}{7}$, the M.L.E. of $\mu$ is $$\hat{\mu}=\frac{45}{7}.$$
+
+\section{}
+Suppose that $(X_i)_{i=1}^n$ form a random sample from an exponential distribution with unknown parameter $\beta>0$. Then we could get the p.d.f. of $X_i$ is $$f(x_i;\beta)=\beta e^{-\beta x_i},~for ~x_i>0$$\indent
+Using the method of moments to get the estimator of $\beta$.\\\indent 
+By the theorem, the mean of the exponential distribution is $1/\beta$. Which means that the first moment is $$\mu_1=\mathbf{E}(X)=\frac{1}{\beta}.$$\indent
+Then, we could get that $$\beta=\frac{1}{\mu_1}.$$\indent
+Next, we set $$\hat{\mu_1}=\frac{1}{n}\sum_{i=1}^nx_i$$\indent
+to obtain estimator $$\hat{\beta}=\frac{1}{\hat{\mu_1}}=\frac{n}{\sum_{i=1}^nx_i}.$$\indent
+Using the method of maximum likelihood estimation to get the M.L.E. of $\beta$.\\\indent
+First, since $X_i$ form a random sample from an exponential distribution with unknown parameter $\beta$ and $X_i$ are independent, the likelihood function is hence $$L(\beta)=\prod_{i=1}^n\beta e^{-\beta x_i}=\beta^nexp(-\beta\sum_{i=1}^nx_i).$$\indent
+The logarithmic likelihood function is $$l(\beta)=\log L(\beta)=n\log\beta-\beta\sum_{i=1}^nx_i.$$\indent
+Differentiation yields that $$\frac{d}{d\beta}l(\beta)=\frac{n}{\beta}-\sum_{i=1}^nx_i.$$\indent
+By equating it to zero, we obtain that the M.L.E. is $$\hat{\beta}=\frac{n}{\sum_{i=1}^nx_i}.$$\indent
+Which is the same as using the method of moments estimator.
+
+\section{}
+Suppose that $(X_i)_{i=1}^n$ form a random sample from a Poisson distribution with unknown parameter $\lambda>0$. Then we could get the p.m.f. of $X_i$ is $$f(x_i;\beta)=\frac{e^{-\lambda}\lambda^{x_i}}{x_i!},~for ~x_i=0,1,2,\dots.$$\indent
+Using the method of moments to get the estimator of $\lambda$.\\\indent 
+By the theorem, the mean of the Poisson distribution is $\lambda$. Which means that the first moment is $$\mu_1=\mathbf{E}(X)=\lambda.$$\indent
+Then, we could get that $$\lambda=\mu_1.$$\indent
+Next, we set $$\hat{\mu_1}=\frac{1}{n}\sum_{i=1}^nx_i,$$\indent
+to obtain the estimator $$\hat{\lambda}=\frac{\sum_{i=1}^nx_i}{n}.$$\indent
+Using the method of maximum likelihood estimation to get the M.L.E. of $\lambda$.\\\indent
+First, since $X_i$ form a random sample from a Poisson distribution with unknown parameter $\lambda$ and $X_i$ are independent, the likelihood function is hence $$L(\lambda)=\prod_{i=1}^n\frac{e^{-\lambda}\lambda^{x_i}}{x_i!}=(e^{-n\lambda}\lambda^{\sum_{i=1}^nx_i})/(\prod_{i=1}^nx_i!).$$\indent
+The logarithmic likelihood function is $$l(\lambda)=\log L(\lambda)=-n\lambda+\log\lambda\sum_{i=1}^nx_i-\log(\prod_{i=1}^nx_i!).$$\indent
+Differentiation yields that $$\frac{d}{d\lambda}l(\lambda)=-n+\frac{\sum_{i=1}^nx_i}{\lambda}.$$\indent
+By equating it to zero, we obtain that the maximum likelihood estimate $\hat{\lambda}$ is $$\hat{\lambda}=\frac{1}{n}\sum_{i=1}^nx_i.$$\indent
+Which is the same as the method of moment estimator.
+
+\section{}
+By the theorem, the posterior p.d.f. of $\theta$ is $$h(\theta\mid\mathbf{x})=\frac{f(x_1\mid\theta)\dots f(x_3\mid\theta)h(\theta)}{g_n(\mathbf{x})},$$\indent
+where $g_n(\mathbf{x})$ is the marginal joint p.d.f. of $(X_i)_{i=1}^3$. Since X follows the uniform distribution U($\theta,\theta+1$) and the prior distribution of $\theta$ is uniform distribution U(10,16), we could say that $h(\theta\mid\mathbf{x})$ is a constant, which means that the posterior p.d.f. of $\theta$ is uniform distribution.\\\indent
+Since X follows the uniform distribution $U(\theta,\theta+1)$, there must be that $$\theta<X<\theta+1.$$\indent
+Then we could solve that $$X-1<\theta<X.$$\indent
+Let $X_{(j)}$ be the j-th minimum among $(X_i)_{i=1}^3$. So that there is $X_{(3)}-1<\theta<X_{(1)}$. Which means that $$11.1<\theta<11.7.$$\indent
+So the support of the conditional distribution of $\theta$ given $(X_i)_{i=1}^3$ is (11.1,11.7).\\\indent
+Since the prior distribution of $\theta$ is U(10,16), we could get the posterior distribution of $\theta$ is uniform distribution U(11.1,11.7), and the p.d.f. of $\theta$ is $$f(\theta\mid\mathbf{x})=\frac{5}{3},~for ~11.1<\theta<11.7,$$\indent
+zero elsewhere.
+
+\section{}
+\subsection{}
+According to the question, the conditional p.m.f. of $X_i$ is $$\mathbf{P}(X_i=x_i\mid\theta)=\theta(1-\theta)^{x_i},~for ~x_i=0,1,2,\dots.$$\indent
+The prior p.d.f. of $\theta$ is $$h(\theta)=1,~for ~0<\theta<1,$$\indent
+zero elsewhere.\\\indent
+Then we need to determine the marginal joint p.m.f. of $(X_i)_{i=1}^n$. Since $X_i$ and $\theta$ are independent, by the theorem, we have that $$g_n(\mathbf{x})=\int_{-\infty}^{+\infty}g_n(\mathbf{x}\cap \theta)\,d\theta=\int_0^1\prod_{i=1}^nf(x_i\mid\theta)h(\theta)\,d\theta=\int_0^1\theta^n(1-\theta)^{\sum_{i=1}^nx_i}\,d\theta.$$\indent
+By the definition of Beta Function, we could get the intergal is $$g_n(\mathbf{x})=\frac{\Gamma(n+1)\Gamma(1+\sum_{i=1}^nx_i)}{\Gamma(n+2+\sum_{i=1}^nx_i)}.$$\indent
+Thus, by the theorem, we could get the posterior distribution of $\theta$ is $$h(\theta\mid \mathbf{x})=\frac{f(x_1\mid\theta)\dots f(x_n\mid\theta)h(\theta)}{g_n(\mathbf{x})}=\frac{\Gamma(n+2+\sum_{i=1}^nx_i)}{\Gamma(n+1)\Gamma(1+\sum_{i=1}^nx_i)}\theta^n(1-\theta)^{\sum_{i=1}^nx_i},~for ~0<\theta<1,$$\indent
+zero elsewhere
+\subsection{}
+If we have the observation $x_1=4,x_2=3,x_3=1,x_4=6$, we could get the posterior distribution of $\theta$ is $$h(\theta\mid\mathbf{x})=\frac{19!}{4!14!}\theta^4(1-\theta)^{14},~for ~0<\theta<1,$$\indent
+zero elsewhere. To get the Bayes' estimate of $\theta$, we need to minimize $(\theta-h(\theta\mid\mathbf{x}))^2$.\\\indent
+By the theorem, we have the Bayes' estimate of $\theta$ is $$\hat{\theta}=\mathbf{E}(\theta)=\int_0^1\theta h(\theta\mid\mathbf{x})\,d\theta=\frac{1}{4}.$$
+
+\section{}
+Since $(X_i)_{i=1}^n$ are random sample from $N(\mu,\sigma^2)$ and $S_n^2$ is the sample variance, by the theorem, we have that $\frac{(n-1)S_n^2}{\sigma^2}$ follows $\chi^2(n-1)$ distribution. Let $X=(n-1)S_n^2/\sigma^2$.\\\indent
+Since (n-1)>0, we have that $$\mathbf{P}(S_n^2/\sigma^2\leqslant 15)=\mathbf{P}(X\leqslant 15(n-1))\geqslant 0.95.$$\indent
+According to the table, we could get that the smallest n is 2.
+
+\newpage
+a
+\end{document}

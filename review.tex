@@ -1,0 +1,110 @@
+\documentclass[landscape,12pt,a3paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\usepackage{tabu}
+
+\setCJKmainfont{Kai}
+
+\title{Review}
+\author{Rookie-Rounder Djy}
+
+\begin{document}
+    
+\maketitle
+
+\begin{table}[H]
+    \begin{tabular}[7]{|l|l|l|l|l|l|l|l|}
+    \hline
+    Name & Parameters & Support & p.d(m).f. & c.d.f. & m.g.f. & $\mathbf{E}$ & $\mathbf{Var}$ \\ \hline
+    Bernoulli D & p & 0,1 & f(1)=p,f(0)=1-p &  & $pe^{t}+1-p$ & p & p(1-p) \\ \hline
+    Binomial D & n,p & $x\in N$ & $f(x)=\binom{n}{x}p^x(1-p)^{n-x}$ &  & $(pe^t+1-p)^n$ & np & np(1-p) \\ \hline
+    Hypergeometric D & N,M,n & [0,n]$\cap N$ &  $\displaystyle p_X(x)=\frac{\binom{M}{x}\binom{N-M}{n-x}}{\binom{N}{n}}$\hfill &  &  & $\displaystyle \frac{nM}{N}$ & $\displaystyle \frac{nM}{N}\frac{(N-M)(N-n)}{N(N-1)}$ \\ \hline
+    Possion D & $\lambda>0$ & $x\in N$ & $\displaystyle p_X(x)=\frac{e^{-\lambda}\lambda^x}{x!}$ &  & $e^{\lambda(e^t-1)}$ & $\lambda$ & $\lambda$ \\ \hline
+    Negative Binomoal D & r,p & $x\in N$ & $\displaystyle p_X(x)=\binom{r+x-1}{x}p^r(1-p)^x$ &  & $\displaystyle \left(\frac{p}{1-(1-p)e^t}\right)^r$ & $\displaystyle \frac{r(1-p)}{p}$ & $\displaystyle \frac{r(1-p)}{p^2}$ \\ \hline
+    Geometry D & p & $x\in N$ & $\displaystyle p_X(x)=p(1-p)^x$ &  &  &  & \\ \hline
+    The Normal D & $\mu,\sigma^2$ & $x\in R$ & $\displaystyle f(x)=\frac{1}{\sigma\sqrt{2\pi}}exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$ & $\displaystyle \Phi\left(\frac{x-\mu}{\sigma}\right)$ & $\displaystyle exp\left(\mu t+\frac{1}{2}\sigma^2t^2\right)$ & $\displaystyle \mu$ & $\displaystyle \sigma^2$\\ \hline
+    The Standard Normal D & 0,1 & $x\in R$ & $\displaystyle f(x)=\frac{1}{\sqrt{2\pi}}exp\left(-\frac{1}{2}x^2\right)$ & $\displaystyle \Phi(x)$ & $\displaystyle exp\left(\frac{1}{2}t^2\right)$ & 0 & 1 \\ \hline
+    Gamma D & $\displaystyle \alpha,\beta$ & x>0 & $\displaystyle f(x)=\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}$ &  & $\displaystyle \left(\frac{\beta}{\beta-t}\right)^\alpha,~t<\beta$ & $\displaystyle \frac{\alpha}{\beta}$ & $\displaystyle \frac{\alpha}{\beta^2}$ \\ \hline
+    Exponential D & $\displaystyle \beta$ & x>0 & $\displaystyle f(x)=\beta e^{-\beta x}$ & $\displaystyle F(x)=1-e^{\beta x}$ & $\displaystyle \frac{\beta}{\beta-t},~t<\beta$ & $\displaystyle \frac{1}{\beta}$ & $\displaystyle \frac{1}{\beta^2}$ \\ \hline
+    Beta D & $\displaystyle \alpha,\beta$ & 0<x<1 & $\displaystyle f(x)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}$ &  &  & $\displaystyle \frac{\alpha}{\alpha+\beta}$ & $\displaystyle \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$ \\ \hline
+    Multinomial D & $\displaystyle \mathbf{p}=(p_i)_{i=1}^k$ & $\displaystyle \sum_{i=1}^kx_i=n$ & $\displaystyle f(\mathbf{x})=\binom{n}{x_1,x_2,\dots,x_k}\prod_{i=1}^kp_i^{x_i}$ &  &  &  & \\ \hline
+    The Chi-Square D & m>0 & x>0 & $\displaystyle f(x)=\Gamma\left(\frac{m}{2},\frac{1}{2}\right)$ &  &  & m & 2m \\ \hline
+    The t-D & m>0 & $\displaystyle x\in R$ & $\displaystyle X=\frac{Z}{(Y/m)^{1/2}},~Y\sim \chi^2(m),~Z\sim N(0,1)$ &  &  &  & \\ \hline
+    The F-D & m>0,n>0 & x>0 & $\displaystyle X=\frac{Y/m}{W/n},~Y\sim\chi^2(m),~W\sim\chi^2(n)$ &  &  &  & \\ \hline
+    \end{tabular}
+\end{table}
+Important Theorem:\\\indent
+\begin{enumerate}
+
+\item $\displaystyle (X_i)_{i=1}^k$ independent follows the Binomial Distribution with $n_i$ and p, then $X=\sum_{i=1}^kX_i$ follows the Binomial Distribution with $n=\sum_{i=1}^kn_i$ and p.
+
+\item $(X_i)_{i=1}^k$ independent follows the Possion Distribution with $\lambda_i$, then $X=\sum_{i=1}^k$ follows the Possion Distribution with $\lambda=\sum_{i=1}^k\lambda_k$.
+
+\item $(X_i)_{i=1}^k$ are i.i.d. follows the Geometric Distribution with p, then the sum $X=\sum_{i=1}^kX_i$ follows the Negative Binomial Distribution with k and p.
+
+\item $X\sim N(\mu,\sigma^2)$ and Y=aX+b $a\neq 0$, then $Y\sim N(a\mu+b,a^2\sigma^2)$.
+
+\item $(X_i)_{i=1}^k$ independent follows $N(\mu_i,\sigma_i^2)$, then $X=\sum_{i=1}^kX_i$ follows $N(\sum_{i=1}^k\mu_i,\sum_{i=1}^k\sigma_i^2)$.
+
+\item $(X_i)_{i=1}^k$ independent follows the Gamma Distribution with $\alpha_i$ and $\beta$, then $X=\sum_{i=1}^kX_i$ follows the Gamma Distribution with $\sum_{i=1}^k\alpha_i$ and $\beta$.
+
+\item $(X_i)_{i=1}^k$ i.i.d. follows the Exponential Distribution with $\beta$, then Y=min\{$X_i$\} follows the Exponential Distribution with $n\beta$.
+
+\item $(X_i)_{i=1}^n$ are random sample from $N(\mu,\sigma^2)$, there are 
+
+{\bf (a)} the sample mean has
+
+$$\overline{X}_n \sim N(\mu, \sigma^2/n).$$
+
+
+{\bf (b)} Sample mean and sameple variance are independent and
+$$\frac{(n-1)S_n^2}{\sigma^2} \sim \chi^2(n-1).$$
+
+
+{\bf (c)} When $\mu$ is known we have
+
+$$\frac{\overline{X}_n -\mu}{S_n/\sqrt{n}} \sim t(n-1).$$
+
+
+{\bf (d)} Suppose $(X_i)_{i=1}^{m}$ and $(Y_j)_{j=1}^{n}$ are random samples from $N(\mu_X, \sigma_X^2)$ and $N(\mu_Y, \sigma_Y^2)$. For sample variance $S_X^2$ and $S_Y^2$ we have
+$$\frac{S_{X}^2 / S_Y^2}{\sigma_1^2/ \sigma_2^2}\sim F(m-1, n-1).$$ 
+
+When $\sigma_X=\sigma_Y=\sigma$ we have
+\[
+\frac{(\overline{X} -\mu_X) - (\overline{Y}-\mu_Y)}{{\color{violet}S}\sqrt{\frac{1}{m}+\frac{1}{n}}} \sim t(m+n-2),
+\]
+where {\color{violet}$S$} is
+\[
+\frac{(m+n-2){\color{violet}S^2}}{\sigma^2}
+=
+\frac{(m-1)S_X^2}{\sigma^2}
++ 
+\frac{(n-1)S_Y^2}{\sigma^2}
+\sim \chi^2(m+n-2).
+\]
+
+\end{enumerate}
+
+\end{document}

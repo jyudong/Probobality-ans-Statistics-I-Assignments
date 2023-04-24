@@ -1,0 +1,168 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{PROBABILITY AND STATISTICS I
+\\HOMEWORK III}
+\author{\\Jianyu Dong   ~~2019511017}
+\date{March, 13~ 2021}
+\begin{document}
+
+\maketitle
+\newpage   
+\section{}
+Let $B_1$ = \{The original ball in the box is black\}\\\indent
+Let $B_2$ = \{The original ball in the box is white\}\\\indent
+Information tells us that$$P(B_1) = p, ~~~ P(B_2) = 1-p$$\indent
+Let A = \{The ball we picked is white\}\\\indent
+We can easily get that$$P(A~|~B_1) = 0.5, ~~~ P(A~|~B_2) = 1$$\indent
+Putting this into Baye's theorem implies that$$P(B_1~|~A) = \frac{P(B_1)P(A~|~B_1)}{\sum_{j = 1}^{2} P(B_j)P(A~|~B_j) } = \frac{p}{2-p}$$\indent
+So now the probability that the original ball in the box is black is $\frac{p}{2-p}$
+
+\section{}
+Let $B_1$ = \{The person have cancer\}\\\indent
+Let $B_2$ = \{The person doesn't have cancer\}\\\indent
+Let A = \{The test show positive\}\\\indent
+Information from the question tells that$$P(B_1) = 0.04, ~~~P(B_2) = 0.96, ~~~ P(A~|~B_1) = 0.79, ~~~ P(A~|~B_2) = 1 - 0.95 = 0.05$$\indent 
+Putting this into Baye's theorem implies that$$P(B_1~|~A) = \frac{P(B_1)P(A~|~B_1)}{\sum_{j = 1}^{2} P(B_j)P(A~|~B_j) } = \frac{79}{199}$$
+
+\section{}
+The discrete random variable X follows the binomial distribution with parameters 10 and $\frac{1}{2}$, so that the probability mass function is$$p_X(x) = P(X = x) = \binom{10}{x} (\frac{1}{2})^x(1-\frac{1}{2})^{10-x} = \binom{10}{x}\frac{1}{1024} ~~~~~ for ~x = 0,1,...,10$$
+
+\section{}
+The discrete random variable X follows the geometric distribution with parameter $\frac{1}{2}$, so that the probability mass function is $$p_X(x) = P(X=x) = (1-\frac{1}{2})^{x-1}\frac{1}{2} = (\frac{1}{2})^x$$
+
+\section{}
+Since X have the p.m.f $p_X(x) = \left(\frac{1}{2}\right)^{\left\lvert x \right\rvert} $, for x = -1,-2,-3,\dots\\\indent
+If $Y = X^4, ~we~have~y = 1,2^4,3^4,\dots$, so the p.m.f of Y is $$p_Y(y) = \left(\frac{1}{2}\right)^{\sqrt[4]{y}}$$
+
+\section{}
+\subsection{}
+Since the probability density function of X is $$f(x) = \left\{
+    \begin{array}{rcl}
+        cx^2, & & for~1\leqslant x\leqslant 2,\\
+        0, & & otherwise. 
+    \end{array}\right.$$\indent
+We have that$$\int_{-\infty}^{+\infty} f(x) \,dx = \int_{1}^{2} cx^2 \,dx = \frac{7}{3}c = 1$$\indent
+So we get the value of c is $\frac{3}{7}$\\\indent
+\begin{figure}[h]
+\includegraphics[width=0.8\textwidth]{hw36}
+\end{figure}
+\subsection{}
+We could calculate that $$P(X > \frac{3}{2}) = \int_{\frac{3}{2}}^{+\infty} f(x) \,dx = \int_{\frac{3}{2}}^{2} \frac{3}{7}x^2 \,dx = \frac{37}{56}$$
+
+\section{}
+Assume there exists a number c satisfying the function given is a probability density function.\\\indent
+If c = 0, f(x) = 0 for all x is a real number. So we have $$\int_{-\infty}^{+\infty} f(x) \,dx = 0$$ \\\indent
+Which shows f(x) is not a probability density function, so c $\neq$ 0.\\\indent
+For c$\neq$ 0, we have $$\int_{-\infty}^{+\infty} f(x) \,dx = \int_{0}^{1} \frac{c}{x} \,dx = -c\lim_{x \to 0} \ln x $$\indent
+For all c$\neq$ 0, we know that $$\lim_{x \to 0}  \left\lvert c \ln x \right\rvert = \infty$$\indent
+So the assumption is false. So there doesn't exist any number c for the given function is a p.d.f.
+
+\section{}
+Problem information tells us that the p.d.f of X is$$f(x) = \left\{
+    \begin{array}{rcl}
+        \frac{1}{x^2}, & & for~x > 1\\
+        0, & & otherwise. 
+    \end{array}\right.$$\indent
+If $C_1$ = \{x : 1 < x < 2\}, $C_2$ = \{x : 4 < x < 5\}, we know that $C_1\cup C_2$ = \{x : 1 < x < 2 or 4 < x < 5\} and $C_1\cap C_2$ = $\varnothing $, so there are$$P(C_1\cup C_2) = \int_{1}^{2} \frac{1}{x^2} \,dx + \int_{4}^{5} \frac{1}{x^2} \,dx = \frac{11}{20},~~~~~ P(C_1\cap C_2) = 0$$
+
+\section{}
+Problem information tells us that the p.d.f of X is$$f(x) = \left\{
+    \begin{array}{rcl}
+        \frac{x+2}{18} & & for~-2 < x <4,\\
+        0 & & otherwise. 
+    \end{array}\right.$$\indent
+We can calculate that$$P(\left\lvert X\right\rvert <1) = P(-1 < X < 1) = \int_{-1}^{1} f(x) \,dx = \int_{-1}^{1} \frac{x+2}{18} \,dx = \frac{2}{9}$$ $$P(X^2 < 9) = P(-3 < X < 3) = \int_{-3}^{3} f(x) \,dx = \int_{-2}^{3} \frac{x+2}{18} \,dx = \frac{25}{36}$$
+
+\section{}
+If $f(x) = ce^{-x^2}$ is a p.d.f for x $\in $ R, we have $$\int_{-\infty}^{+\infty} f(x) \,dx = \int_{-\infty}^{+\infty} ce^{-x^2} \,dx = 1$$\indent
+So c = $\left(\int_{-\infty}^{+\infty} ce^{-x^2} \,dx\right)^{-1}$\\\indent
+In order to calculate above-mentioned integral, firstly we need to calculate $$\int_{-R}^{+R} e^{-x^2} \,dx$$\indent
+Then we calculate
+\begin{equation}
+    \left(\int_{-R}^{R} e^{-x^2} \,dx\right)^2 = \int_{-R}^{R} e^{-x^2} \,dx \int_{-R}^{R} e^{-y^2} \,dy =\iint_{\mbox{\tiny$
+    \begin{array}{c}
+        -R\leqslant x\leqslant R\\
+        -R\leqslant y\leqslant R
+    \end{array}$}} 
+    e^{-x^2-y^2}\,dx\,dy
+\end{equation}\indent
+Since $e^{-x^2-y^2} > 0$ and containment relationship of integration area, we know that$$\iint_{x^2+y^2\leqslant R^2}e^{-x^2-y^2} \,dx\,dy \leqslant \left(\int_{-R}^{R} e^{-x^2} \,dx\right)^2 \leqslant \iint_{x^2+y^2\leqslant 2R^2}e^{-x^2-y^2} \,dx\,dy$$\indent
+With polar coordinate transformation，we get$$\iint_{x^2+y^2\leqslant R^2}e^{-x^2-y^2} \,dx\,dy = \int_{0}^{2\pi} \,d\varphi \int_{0}^{R}e^{-r^2}r\,dr = \pi \left(1-e^{-R^2}\right)$$ $$\iint_{x^2+y^2\leqslant 2R^2}e^{-x^2-y^2} \,dx\,dy = \int_{0}^{2\pi} \,d\varphi \int_{0}^{\sqrt{2}R }e^{-r^2}r\,dr = \pi \left(1-e^{-2R^2}\right)$$\indent
+So we get an inequality$$\pi \left(1-e^{-R^2}\right) \leqslant \left(\int_{-R}^{R} e^{-x^2} \,dx\right)^2 \leqslant \pi \left(1-e^{-2R^2}\right)$$\indent
+Let R $\rightarrow +\infty$, we get $$\int_{-R}^{R} e^{-x^2} \,dx = \sqrt{\pi}$$\indent
+So if $f(x) = ce^{-x^2}$ is a p.d.f for x $\in $ R, $$c = \frac{1}{\sqrt{\pi}}$$
+
+\section{}
+Problem information tells us that the p.d.f of X is$$f(x) = \left\{
+    \begin{array}{rcl}
+        4x^3 & & for~0 < x < 1,\\
+        0 & & otherwise. 
+    \end{array}\right.$$\indent
+So its c.d.f is $$F(x) = \int_{-\infty}^{x} f(t) \,dt = \left\{
+\begin{array}{rcl}
+    0 & & x < 0,\\
+    x^4 & & 0\leqslant x < 1,\\
+    1 & & x \geqslant 1.
+\end{array}\right. $$\indent
+Assume the 20th percentile is $x_0$, since the c.d.f is continuous for $x\in R$, so we have $F(x_0) = 0.2$. We could calculate that $$x_0 = \frac{1}{\sqrt[4]{5}}$$
+
+\section{}
+Problem information tells us that the c.d.f of X is$$F(x) = 
+\begin{cases}
+    0&\mbox{for x < 0,}\\
+    1 - e^{-x} -xe^{-x}&\mbox{for $x\geqslant 0$.}
+\end{cases}$$\indent
+So we could calculate the p.d.f is$$f(x) = \frac{d F(x)}{d x} = 
+\begin{cases}
+    0&\mbox{for x < 0,}\\
+    xe^{-x}&\mbox{for $x\geqslant 0$.}
+\end{cases}$$\indent
+Assume the median is $x_0$, so we have $F(x_0) = 1 - e^{-x} - xe^{-x} = 0.5$, then we could calculate that $x_0 \approx 1.678$
+
+\section{}
+Since the probability set function of X is $$P(C) = \int_{C} e^{-x} \,dx$$\indent wehere support is C = (0,$+\infty$). If $C_k = \{x : 2 - \frac{1}{k}< x\leqslant3\}$, k = 1,2,3,...\\\indent
+We can easily get that $\lim_{k \to \infty} C_k = \{x : 2 < x \leqslant 3\}$, so we could calculate that$$P(\lim_{x \to \infty} C_k) = \int_2^3 e^{-x} \,dx = \frac{e-1}{e^{3}}$$\indent
+Then $$P(C_k) = \int_{2-\frac{1}{k}}^3 e^{-x} \,dx = \sqrt[k]{e}e^{-2} - e^{-3}$$\indent
+We know that $\lim_{x\to \infty} \sqrt[x]{e} = 1$ So we have $$\lim_{k\to \infty}P(C_k) = \lim_{k\to \infty} \sqrt[k]{e}e^{-2} - e^{-3} = \frac{e-1}{e^3}$$\indent
+Which shows that $\lim_{k\to \infty}P(C_k) = P(\lim_{x \to \infty} C_k)$
+
+\section{}
+Since X follows the binomial distribution with parameters n and p = 1/2, we have $$P(X = x) = \binom{n}{x}\left(\frac{1}{2}\right)^x\left(1-\frac{1}{2}\right)^{n-x} = \binom{n}{x}\left(\frac{1}{2}\right)^n $$\indent
+When k = 0, we have $$P(X\leqslant 0) = P(X = 0) = \frac{1}{2^n} \leqslant \frac{1}{2^n} ~~ for ~all ~sufficiently ~large ~n$$\indent
+Assume when $k = t\geqslant 1$, there still is $$P(X\leqslant t) \leqslant \frac{1}{2^n}\binom{n}{t} \frac{n-(t-1)}{n-(2t-1)} ~~ for ~all ~sufficiently ~large ~n$$\indent
+Then when $k = t + 1$, we could calculate that $$P(X\leqslant t+1) = P(X \leqslant t) + P(X = t+1) \leqslant \frac{1}{2^n}\binom{n}{t} \frac{n-(t-1)}{n-(2t-1)} + \frac{1}{2^n}\binom{n}{t+1}$$ $$= \frac{1}{2^n}\binom{n}{t+1}\left(1 + \frac{(t+1)(n-t+1)}{(n-t)(n-2t+1)}\right)$$\indent
+To prove while $k = t + 1$, P(k) still satisfy the inequality，we just need to prove that $$1 + \frac{(t+1)(n-t+1)}{(n-t)(n-2t+1)} \leqslant \frac{n-t}{n-2t-1} = 1 + \frac{t+1}{n-2t-1}$$\indent
+So we need to prove $$\frac{(t+1)(n-t+1)}{(n-t)(n-2t+1)} \leqslant \frac{t+1}{n-2t-1}$$\indent
+Since problem says $n \geqslant 2k $, we have that $n\geqslant 2(t+1)$, so that $n-t > 0$,$n-2t+1 > 0$,$n-2t-1 > 0$,$t+1>0$. Then we just need to prove that $$(n-t)(n-2t+1) - (n-t+1)(n-2t-1) = \left(n^2-3nt+n+2t^2-t\right) - \left(n^2-3nt+2t^2-t-1\right) = n+1 >0$$\indent
+It is obvious that $n+1>0$, so we have proven that $$1 + \frac{(t+1)(n-t+1)}{(n-t)(n-2t+1)} \leqslant \frac{n-t}{n-2t-1} $$\indent
+Which shows that $$P(X\leqslant t+1) \leqslant 2^{-n} \binom{n}{t+1} \frac{n-((t+1)-1)}{n-(2(t+1)-1)}$$\indent
+In summary, we have proven that for a fixed k and all $n\leqslant 2k$, there exists $$P(X\leqslant k) \leqslant 2^{-n} \binom{n}{k} \frac{n-(k-1)}{n-(2k-1)}$$
+
+\newpage
+a
+\end{document}

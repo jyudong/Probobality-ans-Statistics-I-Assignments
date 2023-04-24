@@ -1,0 +1,99 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{PROBABILITY AND STATISTICS I
+\\HOMEWORK VI}
+\author{\\Jianyu Dong   ~~2019511017}
+\date{April, 2~ 2021}
+
+\begin{document}
+    
+\maketitle
+\newpage
+
+\section{}
+By the theorem, we have the mean of random variable X is $$E(X) = M^{(1)}(0) = \left.\frac{d M(t)}{dt}\right\rvert_{t=0} = \frac{1}{2}.$$\indent
+We also could determine that $$E(X^2) = M^{(2)}(0) = \left.\frac{d^2 M(t)}{dt^2}\right\rvert_{t=0} = 1$$\indent
+By the theorem, we could get the variance of X is $$Var(x) = E(X^2)-E(X)^2 = 1-\frac{1}{4} = \frac{3}{4}$$
+
+\section{}
+By the definition, we could get the m.g.f. of Cauchy distribution is $$M_X(t) = \int_{-\infty}^{+\infty} \frac{e^{xt}}{\pi(1+x^2)}\,dx.$$\indent
+If $t>0$, we could easily get that when $x\to+\infty$, $\frac{e^{xt}}{\pi(1+x^2)}\to+\infty$. If $t<0$, we could easily get that when $x\to-\infty$, $\frac{e^{xt}}{\pi(1+x^2)}\to+\infty$. Which means $M_X(t)$ does not exist for $t\neq 0$. Thus, there does not exist the moment generating function for Cauchy distribution.
+
+\section{}
+Since $X_1$ and $X_2$ are independent random variables and each follows the Binomial distribution with parameters $n_i$ and p, $X_1$ could be seen as the sum of $n_1$ independent and identical random variables following the Bernoulli distribution with parameter p. Let $Y$ follows the Bernoulli distribution with parameter p, we could get the m.g.f. of $Y$ is $$M_Y(t) = E(e^{ty}) = pe^{t}+1-p$$\indent
+We have $X_1=n_1Y,~X_2=n_2Y$, by the theorem, we could get the moment generating functions of $X_1$ and $X_2$ are $$M_{X_1}(t) = \left(pe^{t}+1-p\right)^{n_1},~M_{X_2}(t) = \left(pe^{t}+1-p\right)^{n_2}$$\indent
+Let $Z=X_1+X_2$, by the theorem, we could determine the m.g.f. of Z is $$M_Z(t)=M_{X_1}(t)M_{X_2}(t) = \left(pe^{t}+1-p\right)^{n_1+n_2}.$$\indent
+So $X_1+X_2$ follows the Binomial distribution with parameters $n_1+n_2$ and p.
+
+\section{}
+Let $f(x)=x^2$, we have that $f^{(2)}(x)=2>0$, which means that $f(x)=x^2$ is a convex function. Since the fourth moment of random variable X is finite, we could get that the second moment and the second central moment of X is finite. Using Jensen's Inequality we could get that $$E\left(\left(\left(X-\mu\right)^2\right)^2\right) = E\left(f\left(\left(X-\mu\right)^2\right)\right) \geqslant f\left(E\left(\left(X-\mu\right)^2\right)\right) = \left(E\left(\left(X-\mu\right)^2\right)\right)^2=\sigma^4$$\indent
+So we get that $$E\left(\left(X-\mu\right)^4\right)\geqslant \sigma^4$$
+
+\section{}
+Since r is a one-to-one and continuous function defined on $I\subseteq R$ and a random variable X take values on I, we could get that the function r is strictly monotonous function. Without loss of generality,，we could assume r(x) is a monotone increasing function. By the definition, if m is the median of X, we could get $$P(X<m)\leqslant\frac{1}{2},~P(X\geqslant m)\geqslant\frac{1}{2}.$$\indent
+Then according to monotone increasing, we have that r(x)<r(m) if and only if x<m, and r(x)>r(m) if and only if x>m. So we get $$P(r(X)<r(m))=P(X<m)\leqslant\frac{1}{2},~P(r(X)\geqslant r(m))=P(X>m)\geqslant \frac{1}{2}.$$\indent In a similar way, if r(x) is a monotone decreasing function, we could also get that r(m) is the median of r(x). So r(m) is the median of r(X).
+
+\section{}
+Since X follows Binomial distribution with parameters n and p, and Y follows Binomial distribution with parameters n and 1-p, by the definition, we could get the skewness of X and Y is $$\frac{E((X-\mu)^3)}{\sigma^3} = \frac{n\left(p(1-p)^3-(1-p)p^3\right)}{\left(np(1-p)\right)^{\frac{3}{2}}},~\frac{E((Y-\mu)^3)}{\sigma^3} = \frac{n\left((1-p)p^3-p(1-p)^3\right)}{\left(n(1-p)p\right)^{\frac{3}{2}}}$$\indent
+Thus, it is obvious that the skewness of Y is the negative of the skewness of X.
+
+\section{}
+\subsection{}
+By the theorem, we could get that to minimize $E((X-d)^2)$ d is the expectation of X. Thus $$d = E(X) = \int_0^1 2x^2 \,dx = \frac{2}{3}.$$\indent
+So $d=\frac{2}{3}$ minimizes $E((X-d)^2)$.
+\subsection{}
+By the theorem, we could get that to minimize $E(\left\lvert X-d\right\rvert)$ d is the median of X. Thus we have $$P(X<d)\leqslant\frac{1}{2},~P(X\leqslant d)\geqslant\frac{1}{2}$$\indent
+So we get $d=\frac{\sqrt{2}}{2}$ minimizes $E(\left\lvert X-d\right\rvert)$.
+
+\section{}
+To prove that m is the unique median of the distribution of X, we need to prove m is a median firstly. According to the question, we have $P(X<m)<\frac{1}{2}~and~P(X>m)<\frac{1}{2}$, and we also know that $P(X>m)+P(X\leqslant m)=1$, so that $$P(X<m)<\frac{1}{2}~and~P(X\leqslant m)\geqslant \frac{1}{2}.$$\indent Thus, we get m is a median of the distribution of X.\\\indent
+If X is a continuous random variable and m is a median of the distribution of X, we could get that $$P(X<m)=\frac{1}{2},~P(X>m)=\frac{1}{2}.$$\indent
+Which does not conform to the meaning of the question, so X is a discrete random variable and 0<P(X=m)<1.\\\indent
+Then we need to prove the median is unique. Assume there exists another median $m'\neq m$ of the distribution of X and without loss of generality, suppose m'>m. By the definition, we have $P(X<m')\leqslant\frac{1}{2}~and~P(X\leqslant m')\geqslant\frac{1}{2}$. While we have that $$P(X<m')\geqslant P(X<m)+P(X=m)=1-P(X>m)>\frac{1}{2}$$\indent
+which means there is contradiction between the assumption and the question, so the assumption is wrong, so there is not another median of the distribution of X. So m is the unique median of the distribution of X.
+
+\section{}
+By the definition, we have the m.g.f. of X is $$M_X(t) = \int_0^{+\infty} e^{tx}xe^{-x} = \int_0^{+\infty} xe^{-(1-t)x}.$$\indent
+In order to guarantee the integral exists, 1-t must be positive which means t<1. Thus we could determine the integral $$M_X(t) = \int_0^{+\infty} xe^{-(1-t)x} = \frac{1}{(1-t)^2}.$$\indent
+So the moment generating function of X is $$M_X(t) = \frac{1}{(1-t)^2},~for ~t<1.$$
+
+\section{}
+By the theorem, if we could find a probability function of $X_1$ which satisfy the m.g.f. is $$M_{X_1}(t) = \frac{1}{6}e^{-2t} + \frac{1}{3}e^{-t} + \frac{1}{4}e^{t} + \frac{1}{4}e^{2t}$$\indent this probability function must be the probability function of X. We could easily get that if $$p_{X_1}(x) = \begin{cases}
+    \frac{1}{6}, & ~for ~x=-2,\\
+    \frac{1}{3}, & ~for ~x=-1,\\
+    \frac{1}{4}, & ~for ~x=1,\\
+    \frac{1}{4}, & ~for ~x=2,
+\end{cases}$$\indent
+the m.g.f. of $X_1$ is $$M_{X_1}(t)=\frac{1}{6}e^{-2t} + \frac{1}{3}e^{-t} + \frac{1}{4}e^{t} + \frac{1}{4}e^{2t}$$\indent
+the same as X. Thus, the probability function of X must be the same as $X_1$. So we could easily determine that $$P(\left\lvert X\right\rvert \leqslant 1) = \frac{1}{3} + \frac{1}{4} = \frac{7}{12}.$$
+
+\section{}
+By the theorem, if we could find a probability function of $Y$ which satisfy the m.g.f. is $$M_{Y}(t) = \frac{e^t}{3-2e^t}$$\indent this probability function must be the probability function of X. If Y follows Geometric distribution with parameter p, we could determine the m.g.f. of $Y$ is $$M_{Y}(t) = \sum_{y=1}^{+\infty} (1-p)^{y-1}p e^{ty} = \frac{pe^t}{1-(1-p)e^t}.$$\indent
+If p=$\frac{1}{3}$, we get that the moment generating function of Y is the same as X. So X follows Geometric distribution with parameter p, and the c.d.f. of X is $$F_X(x) = \sum_{k=1}^{\left\lfloor x\right\rfloor} \left(1-\frac{1}{3}\right)^{k-1}\frac{1}{3}= 1-\left(\frac{2}{3}\right)^{\left\lfloor x\right\rfloor}.$$
+
+\end{document}
